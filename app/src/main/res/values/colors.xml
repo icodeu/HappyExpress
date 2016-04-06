@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="main_blue_light">#3F56B5</color>
+    <color name="main_blue_dark">#30459E</color>
+    <color name="main_white">#FFFFFF</color>
+    <color name="main_black">#000000</color>
+    <color name="main_black_grey">#6D6D6D</color>
+    <color name="main_grey_light">#F3F3F3</color>
+    <color name="zircon">#E1E1E1</color>
+
+    <color name="iron">#D6D7D7</color>
+    <color name="limeade">#649A00</color>
+    <color name="green">#77cdcc</color>
+    <color name="orange">#ff8500</color>
+
+    <!-- 找不到颜色定义 先不写了 -->
+    <!--<color name="tabIndicatorColor"></color>-->
+    <!--<color name="tabSelectedTextColor"></color>-->
+    <!--<color name="tabTextColor"></color>-->
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="gold_drop">#F4820A</color>
+    <color name="gallery">#EEEFF0</color>
+    <color name="steel">#646566</color>
+    <color name="gray">#7F8081</color>
+    <color name="mercury">#E3E6E6</color>
+    <color name="spiro_disco_ball">#28CEFF</color>
+    <color name="off_green">#E4F4F3</color>
+    <color name="international_orange">#FF5001</color>
+    <color name="tangelo">#F85507</color>
+</resources>

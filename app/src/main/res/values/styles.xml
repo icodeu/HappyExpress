@@ -1,0 +1,36 @@
+<resources>
+
+    <style name="MyThemeLightGreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Toolbar 颜色 -->
+        <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">@android:color/white</item>
+
+        <!-- Toolbar 字体颜色 -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!-- 文字选中颜色 比如NavigationView中的文字选中 -->
+        <item name="colorAccent">@color/main_blue_light</item>
+    </style>
+
+    <!-- TabLayout 的自定义Style-->
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/main_white</item>
+        <item name="tabTextColor">@color/main_grey_light</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/main_white</item>
+    </style>
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
+
+    <style name="MyThemeBlue.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyThemeBlue.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyThemeLightGreen.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyThemeLightGreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!-- RecyclerView Footer 加载更多-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- 加载更多的ProgressBar -->
+    <ProgressBar
+        android:id="@+id/id_pb_loadmore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- 没有更多内容时显示TextView -->
+    <ViewStub
+        android:id="@+id/id_vs_nomore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout="@layout/item_footer_nomore" />
+
+</LinearLayout>
