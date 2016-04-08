@@ -5,6 +5,7 @@ import android.util.Log;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -30,6 +31,14 @@ public class ExpressInfo extends BmobObject{
      * 创建订单的用户
      */
     private User publishedUser;
+
+    /**
+     * 抢单的快递员
+     */
+    private User courierUser;
+
+    // 抢单时间
+    private BmobDate grabOrderDate;
 
     public static void createThisTable(Context context) {
         ExpressInfo info = new ExpressInfo();
@@ -111,6 +120,23 @@ public class ExpressInfo extends BmobObject{
 
     public void setPublishedUser(User publishedUser) {
         this.publishedUser = publishedUser;
+    }
+
+
+    public User getCourierUser() {
+        return courierUser;
+    }
+
+    public void setCourierUser(User courierUser) {
+        this.courierUser = courierUser;
+    }
+
+    public BmobDate getGrabOrderDate() {
+        return grabOrderDate;
+    }
+
+    public void setGrabOrderDate(BmobDate grabOrderDate) {
+        this.grabOrderDate = grabOrderDate;
     }
 
     @Override
