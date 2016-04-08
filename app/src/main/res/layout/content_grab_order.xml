@@ -68,11 +68,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
                 
                 <EditText
+                    android:id="@+id/id_et_send_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="寄件人地址"
                     android:hint="寄件人地址"/>
             </LinearLayout>
 
@@ -89,11 +91,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
 
                 <EditText
+                    android:id="@+id/id_et_send_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="寄件人姓名"
                     android:hint="寄件人姓名"/>
             </LinearLayout>
 
@@ -110,11 +114,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
 
                 <EditText
+                    android:id="@+id/id_et_send_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="寄件人电话"
                     android:hint="寄件人电话"/>
             </LinearLayout>
         </LinearLayout>
@@ -154,11 +160,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
 
                 <EditText
+                    android:id="@+id/id_et_recv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="收件人地址"
                     android:hint="收件人地址"/>
             </LinearLayout>
 
@@ -175,11 +183,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
 
                 <EditText
+                    android:id="@+id/id_et_recv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="收件人姓名"
                     android:hint="收件人姓名"/>
             </LinearLayout>
 
@@ -196,11 +206,13 @@
                     android:src="@drawable/postman_order_clock_icon"/>
 
                 <EditText
+                    android:id="@+id/id_et_recv_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="14sp"
                     android:textColor="@color/steel"
+                    android:text="收件人电话"
                     android:hint="收件人电话"/>
             </LinearLayout>
         </LinearLayout>

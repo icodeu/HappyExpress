@@ -30,4 +30,8 @@
     <color name="off_green">#E4F4F3</color>
     <color name="international_orange">#FF5001</color>
     <color name="tangelo">#F85507</color>
+    <color name="lily_white">#EBEBEB</color>
+    <color name="gallery_white">#F0F0F0</color>
+    <color name="safety_orange">#FB9802</color>
+    <color name="neon_carrot">#FB9635</color>
 </resources>

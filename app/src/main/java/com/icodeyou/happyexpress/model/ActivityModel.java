@@ -3,6 +3,7 @@ package com.icodeyou.happyexpress.model;
 import android.content.Context;
 import android.content.Intent;
 
+import com.icodeyou.happyexpress.activity.queryexpress.QueryExpressActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.ComeDoorOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.GrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.PublishGrabOrderActivity;
@@ -37,8 +38,17 @@ public class ActivityModel {
     /**
      * 发布抢单寄件页面
      */
-    public static void goToPublishGrabOrderActivity(Context context) {
+    public static void goToPublishGrabOrderActivity(Context context, String objectId) {
         Intent intent = new Intent(context, PublishGrabOrderActivity.class);
+        intent.putExtra(PublishGrabOrderActivity.EXTRA_OBJECT_ID, objectId);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 查询快递页面
+     */
+    public static void goToQueryExpressActivity(Context context) {
+        Intent intent = new Intent(context, QueryExpressActivity.class);
         context.startActivity(intent);
     }
 

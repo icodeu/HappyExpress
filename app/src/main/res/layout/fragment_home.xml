@@ -55,6 +55,7 @@
 
         <!-- 查快递 -->
         <LinearLayout
+            android:id="@+id/id_ll_query_express"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

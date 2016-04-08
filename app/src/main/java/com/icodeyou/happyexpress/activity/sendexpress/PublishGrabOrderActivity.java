@@ -2,18 +2,43 @@ package com.icodeyou.happyexpress.activity.sendexpress;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
+import com.icodeyou.happyexpress.bean.ExpressInfo;
+import com.icodeyou.happyexpress.model.RequestCallback;
+import com.icodeyou.happyexpress.model.RequestModel;
 import com.icodeyou.happyexpress.view.TimePassageView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PublishGrabOrderActivity extends BaseActivity {
 
+    private static final String TAG = "PublishActivity";
+
+    public static final String SEND_ADDRESS = "sendAddress";
+    public static final String SEND_NAME = "sendName";
+    public static final String SEND_MOBILE = "sendMobile";
+    public static final String RECV_ADDRESS = "recvAddress";
+    public static final String RECV_NAME = "recvName";
+    public static final String RECV_MOBILE = "recvMobile";
+    public static final String EXTRA_BUNDLE = "extra_bundle";
+
+    public static final String EXTRA_OBJECT_ID = "extra_object_id";
+
     private TimePassageView mTimePassageView;
     private Button mBtnCancelOrder;
+
+    private String mObjectId;
+
+    private static final long POLL_PERIOD_TIME = 2000;
+    private Timer mPollTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +49,38 @@ public class PublishGrabOrderActivity extends BaseActivity {
         initView();
         mTimePassageView.setAttachActivity(this);
         mTimePassageView.start();
+
+        getDataPassed();
+
+        startPollGrabOrderState();
+    }
+
+    private void startPollGrabOrderState() {
+        mPollTimer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                RequestModel.getExpressInfoByObjectId(PublishGrabOrderActivity.this, mObjectId, new RequestCallback<ExpressInfo>() {
+                    @Override
+                    public void onSuccess(ExpressInfo expressInfo) {
+                        Log.d(TAG, expressInfo.toString());
+                    }
+
+                    @Override
+                    public void onFail(ExpressInfo expressInfo) {
+
+                    }
+                });
+            }
+        };
+        mPollTimer.schedule(timerTask, 0, POLL_PERIOD_TIME);
+    }
+
+    private void getDataPassed() {
+        Intent intent = getIntent();
+        if (intent.hasExtra(EXTRA_OBJECT_ID)) {
+            mObjectId = intent.getStringExtra(EXTRA_OBJECT_ID);
+        }
     }
 
     private void initView() {
@@ -47,4 +104,11 @@ public class PublishGrabOrderActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPollTimer != null) {
+            mPollTimer.cancel();
+        }
+    }
 }

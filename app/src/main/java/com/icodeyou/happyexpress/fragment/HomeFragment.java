@@ -25,6 +25,9 @@ public class HomeFragment extends Fragment {
 
     private ImageView mIvPostStationMore;
     private LinearLayout mLlSendExpress;
+    private LinearLayout mLlQueryExpress;
+
+
     private ListView mLvNearPostStation;
     private NearPostStationAdapter mNearPostStationAdapter;
     private List<PostStation> mPostStations;
@@ -39,6 +42,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mLlSendExpress = (LinearLayout) view.findViewById(R.id.id_ll_send_express);
+        mLlQueryExpress = (LinearLayout) view.findViewById(R.id.id_ll_query_express);
         mLvNearPostStation = (ListView) view.findViewById(R.id.id_lv_near_post_station);
         mIvPostStationMore = (ImageView) view.findViewById(R.id.id_iv_near_post_station_more);
 
@@ -69,6 +73,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActivityModel.goToSendExpressActivity(getActivity());
+            }
+        });
+
+        mLlQueryExpress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityModel.goToQueryExpressActivity(getActivity());
             }
         });
 

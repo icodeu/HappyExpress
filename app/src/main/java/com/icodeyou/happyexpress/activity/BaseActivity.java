@@ -1,5 +1,6 @@
 package com.icodeyou.happyexpress.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,11 +13,15 @@ import com.icodeyou.happyexpress.util.PreferencesUtils;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar mBaseToolbar;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusBarTransparentIfPossible();
+
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
     }
 
     protected void setToolbar() {
@@ -30,6 +35,17 @@ public abstract class BaseActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void showProgressDialog(String message) {
+        mProgressDialog.setMessage(message);
+        mProgressDialog.show();
+    }
+
+    public void dismissProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
     }
 
     /**
