@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HappyExpress</string>
+    <string name="app_name">快递员</string>
 
     <string name="open">打开</string>
     <string name="close">关闭</string>

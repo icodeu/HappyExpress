@@ -49,5 +49,6 @@ dependencies {
     //bmob-im：bmob的im包，以下两个配置是im功能所需
     compile 'cn.bmob.android:bmob-im:1.1.9'
     compile 'cn.bmob.android:bmob-sdk:3.4.3'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile project(':library')
 }

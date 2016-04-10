@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.bean;
+package com.icodeyou.library.util.bean;
 
 /**
  * Created by huan on 16/4/6.

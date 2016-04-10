@@ -169,8 +169,8 @@ public class MainActivity extends BaseActivity {
     private void initData() {
         mFragments = new ArrayList<Fragment>();
         mTitles = new String[4];
-        mTitles[0] = "首页";
-        mTitles[1] = "发现";
+        mTitles[0] = "抢单";
+        mTitles[1] = "历史记录";
         mTitles[2] = "驿站";
         mTitles[3] = "我的";
         HomeFragment homeFragment = new HomeFragment();
@@ -225,70 +225,4 @@ public class MainActivity extends BaseActivity {
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);
         mNavigationView = (NavigationView) findViewById(R.id.id_navigationview);
     }
-
-    /**
-     * 初始化一些数据到LeanCloud
-     */
-    /*
-    private void addInitData() {
-        List<String> articleListUrls = new ArrayList<String>();
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_Android%20关于%20GridView%20那些事");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_Android%20平台持久化%20debug%20log%20的工具类");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_Android%20开发必备知识：我和%20Gradle%20有个约会");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_Android开发经验总结");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_App性能优化浅谈");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_Gradle新一代自动化构建工具");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_每个%20Android%20开发者都应该了解的资源列表");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_理解%20Java%20中的弱引用");
-        articleListUrls.add("http://7xojkh.com1.z0.glb.clouddn.com/android_面试时问哪些问题能试出一个Android应用开发者真正的水平");
-
-        List<String> articleTitles = new ArrayList<String>();
-        articleTitles.add("Android 关于 GridView 那些事");
-        articleTitles.add("Android 平台持久化 debug log 的工具类");
-        articleTitles.add("Android 开发必备知识：我和 Gradle 有个约会");
-        articleTitles.add("Android开发经验总结");
-        articleTitles.add("App性能优化浅谈");
-        articleTitles.add("Gradle新一代自动化构建工具");
-        articleTitles.add("每个 Android 开发者都应该了解的资源列表");
-        articleTitles.add("理解 Java 中的弱引用");
-        articleTitles.add("面试时问哪些问题能试出一个Android应用开发者真正的水平");
-
-        List<String> articleImgs = new ArrayList<String>();
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/11b81b5a618c39ae779a.png?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/e4ec01dec05fa355a172.jpg?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/4324bddd156e7d80f2e5.jpg?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/a507dcafda98ba06ceb7.jpg?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://image2.rayliimg.cn/M/M006/2011-07-09/images/20110709135314549.jpg");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/bfa312a2825543a6992f.png?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/5891c537dfff2fd37c4a.jpg?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/514e6720261eb1438746.jpg?imageView/2/w/800/h/600/q/80/format/png");
-        articleImgs.add("http://ac-mhke0kuv.clouddn.com/4921b67f38b0add5ff1e.jpg?imageView/2/w/800/h/600/q/80/format/png");
-
-        for (int i = 0; i < articleListUrls.size(); i++) {
-            AVObject post = new AVObject("ArticleList");
-            post.put(ArticleList.KEY_ID, String.valueOf(i));
-            post.put(ArticleList.KEY_TITLE, articleTitles.get(i));
-            post.put(ArticleList.KEY_DESC, "desc");
-            post.put(ArticleList.KEY_IMAGE_URL, articleImgs.get(i));
-            post.put(ArticleList.KEY_AUTHOR_NAME, "icodeyou");
-            post.put(ArticleList.KEY_AUTHOR_IMG_URL, "http://7xojkh.com1.z0.glb.clouddn.com/author.png");
-            post.put(ArticleList.KEY_POST_TIME, "2015-12-16 11:23");
-            post.put(ArticleList.KEY_STAR_COUNT, 0);
-            post.put(ArticleList.KEY_CATEGORY, "android");
-            post.put(ArticleList.KEY_RESPONSE_COUNT, 0);
-            post.put(ArticleList.KEY_ARTICLE_URL, articleListUrls.get(i));
-
-            post.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(AVException e) {
-                    if (e == null) {
-                        Log.d(TAG, "save success");
-                    } else {
-                        Log.d(TAG, "save fail " + e.getCode() + " message " + e.getMessage());
-                    }
-                }
-            });
-        }
-    }
-    */
 }

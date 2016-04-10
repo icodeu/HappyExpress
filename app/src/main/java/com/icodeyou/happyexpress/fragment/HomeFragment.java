@@ -12,8 +12,8 @@ import android.widget.ListView;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.NearPostStationAdapter;
-import com.icodeyou.happyexpress.bean.PostStation;
 import com.icodeyou.happyexpress.model.ActivityModel;
+import com.icodeyou.library.util.bean.PostStation;
 
 import java.util.ArrayList;
 import java.util.List;

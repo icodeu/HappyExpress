@@ -3,9 +3,9 @@ package com.icodeyou.happyexpress.model;
 import android.content.Context;
 import android.util.Log;
 
-import com.icodeyou.happyexpress.bean.ExpressInfo;
-import com.icodeyou.happyexpress.bean.GrabOrder;
-import com.icodeyou.happyexpress.bean.User;
+import com.icodeyou.library.util.bean.ExpressInfo;
+import com.icodeyou.library.util.bean.GrabOrder;
+import com.icodeyou.library.util.bean.User;
 
 import java.util.List;
 

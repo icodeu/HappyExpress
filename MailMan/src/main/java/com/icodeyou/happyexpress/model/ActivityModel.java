@@ -8,7 +8,7 @@ import com.icodeyou.happyexpress.activity.sendexpress.ComeDoorOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.GrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.PublishGrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.SendExpressActivity;
-import com.icodeyou.happyexpress.bean.ExpressInfo;
+import com.icodeyou.library.util.bean.ExpressInfo;
 
 /**
  * Created by huan on 16/4/5.

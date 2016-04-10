@@ -6,8 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.bean.LogisticsInfo;
 import com.icodeyou.library.util.adapter.CommonAdapter;
+import com.icodeyou.library.util.bean.LogisticsInfo;
 
 import java.util.List;
 

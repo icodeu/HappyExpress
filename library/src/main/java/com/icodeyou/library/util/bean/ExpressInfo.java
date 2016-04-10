@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.bean;
+package com.icodeyou.library.util.bean;
 
 import android.content.Context;
 import android.util.Log;

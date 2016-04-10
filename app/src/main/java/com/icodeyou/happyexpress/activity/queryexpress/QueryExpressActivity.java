@@ -11,8 +11,8 @@ import android.widget.ListView;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
 import com.icodeyou.happyexpress.adapter.LogisticsAdapter;
-import com.icodeyou.happyexpress.bean.LogisticsInfo;
 import com.icodeyou.happyexpress.view.LogisticsHeaderView;
+import com.icodeyou.library.util.bean.LogisticsInfo;
 
 import java.util.ArrayList;
 import java.util.List;
