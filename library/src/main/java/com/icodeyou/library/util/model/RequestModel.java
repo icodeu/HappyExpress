@@ -164,7 +164,7 @@ public class RequestModel {
     }
 
     /**
-     * 查询待上门取件的订单 GrabOrder
+     * 取货完成，填写取件码 GrabOrder
      */
     public static void updateGrabOrderAfterTakeExpress(Context context, GrabOrder grabOrder, final RequestCallback<String> callback) {
         // Update isTake -> true
@@ -180,6 +180,49 @@ public class RequestModel {
             public void onFailure(int i, String s) {
                 callback.onSuccess(s);
                 Log.d(TAG, "onFailure 更新isTaked->true");
+            }
+        });
+    }
+
+    /**
+     * 查询待发货的订单 GrabOrder
+     */
+    public static void querySendExpressInfo(Context context, final RequestCallback<List<GrabOrder>> callback) {
+        BmobQuery<GrabOrder> query = new BmobQuery<GrabOrder>();
+        query.addWhereEqualTo("courierUser", BmobUser.getCurrentUser(context, User.class));
+        query.addWhereEqualTo("trackingNumber", null);
+        query.addWhereEqualTo("isTaked", true);
+        query.include("expressInfo");
+        Log.d(TAG, "doing 查询待发货的订单");
+        query.findObjects(context, new FindListener<GrabOrder>() {
+            @Override
+            public void onSuccess(List<GrabOrder> list) {
+                Log.d(TAG, "onSuccess 查询待发货的订单 " + list.toString());
+                callback.onSuccess(list);
+            }
+            @Override
+            public void onError(int i, String s) {
+            }
+        });
+    }
+
+    /**
+     * 发货完成，填写运单号 GrabOrder
+     */
+    public static void updateGrabOrderAfterSendExpress(Context context, GrabOrder grabOrder, String trackingNumber ,final RequestCallback<String> callback) {
+        // Update trackingNumber
+        GrabOrder newOrder = new GrabOrder();
+        newOrder.setTrackingNumber(trackingNumber);
+        newOrder.update(context, grabOrder.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess("success");
+                Log.d(TAG, "onSuccess 更新trackingNumber");
+            }
+            @Override
+            public void onFailure(int i, String s) {
+                callback.onSuccess(s);
+                Log.d(TAG, "onFailure 更新trackingNumber");
             }
         });
     }

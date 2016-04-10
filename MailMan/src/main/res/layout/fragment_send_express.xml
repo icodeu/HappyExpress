@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.icodeyou.happyexpress.fragment.HomeFragment">
+
+    <TextView
+        android:id="@+id/id_tv_empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="暂时没有新的待发货订单"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/id_lv_send_express_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
+</RelativeLayout>

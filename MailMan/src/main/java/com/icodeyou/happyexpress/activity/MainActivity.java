@@ -25,6 +25,7 @@ import com.icodeyou.happyexpress.adapter.ContentViewPagerAdapter;
 import com.icodeyou.happyexpress.fragment.ComeDoorTakeFragment;
 import com.icodeyou.happyexpress.fragment.ContentFragment;
 import com.icodeyou.happyexpress.fragment.HomeFragment;
+import com.icodeyou.happyexpress.fragment.SendExpressFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,12 +174,14 @@ public class MainActivity extends BaseActivity {
         mTitles[0] = "抢单";
         mTitles[1] = "待上门取件";
         mTitles[2] = "待发货";
-        mTitles[3] = "我的";
+        mTitles[3] = "已完成";
         HomeFragment homeFragment = new HomeFragment();
         mFragments.add(homeFragment);
         ComeDoorTakeFragment comeDoorTakeFragment = new ComeDoorTakeFragment();
         mFragments.add(comeDoorTakeFragment);
-        for (int i = 2; i < mTitles.length; i++) {
+        SendExpressFragment sendExpressFragment = new SendExpressFragment();
+        mFragments.add(sendExpressFragment);
+        for (int i = 3; i < mTitles.length; i++) {
             ContentFragment fragment = new ContentFragment();
             Bundle bundle = new Bundle();
             bundle.putString(ContentFragment.BUNDLE_KEY_CATEGORY, mTitles[i]);

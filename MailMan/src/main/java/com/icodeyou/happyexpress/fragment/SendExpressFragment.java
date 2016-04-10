@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.MainActivity;
-import com.icodeyou.happyexpress.adapter.ComeDoorTakeListAdapter;
+import com.icodeyou.happyexpress.adapter.SendExpressListAdapter;
 import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.GrabOrder;
 import com.icodeyou.library.util.model.RequestCallback;
@@ -23,64 +23,62 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ComeDoorTakeFragment extends Fragment {
+public class SendExpressFragment extends Fragment {
 
-    private static final String TAG = "ComeDoorTakeFragment";
+    private static final String TAG = "SendExpressFragment";
 
-    private ListView mLvTakeOrder;
-    private ComeDoorTakeListAdapter mTakeListAdapter;
+    private ListView mLvSendExpress;
+    private SendExpressListAdapter mSendExpressAdapter;
     private List<GrabOrder> mGrabOrders;
 
     private TextView mTvEmptyView;
 
     private Timer mPollTimer;
-    private static final long POLL_PERIOD_TIME = 2000;
+    private static final long POLL_PERIOD_TIME = 4000;
 
-    public ComeDoorTakeFragment() {
+    public SendExpressFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_come_door_take, container, false);
-        mLvTakeOrder = (ListView) view.findViewById(R.id.id_lv_come_door_order_list);
+        View view = inflater.inflate(R.layout.fragment_send_express, container, false);
+        mLvSendExpress = (ListView) view.findViewById(R.id.id_lv_send_express_list);
         mTvEmptyView = (TextView) view.findViewById(R.id.id_tv_empty_view);
         mTvEmptyView.setVisibility(View.VISIBLE);
-        ((MainActivity)getActivity()).showProgressDialog("正在获取待上门取件订单");
+        ((MainActivity)getActivity()).showProgressDialog("正在获取待发货订单");
 
         initData();
 
         setAdapter();
 
-        startPollComeDoorTakeData();
+        startPollSendExpressData();
 
         return view;
     }
 
-    private void startPollComeDoorTakeData() {
+    private void startPollSendExpressData() {
         mPollTimer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                RequestModel.queryComeDoorTakeExpressInfo(getContext(), new RequestCallback<List<GrabOrder>>() {
+                RequestModel.querySendExpressInfo(getContext(), new RequestCallback<List<GrabOrder>>() {
                     @Override
                     public void onSuccess(List<GrabOrder> grabOrders) {
                         if (!CollectionUtil.isEmpty(grabOrders)) {
                             mGrabOrders.clear();
                             mGrabOrders.addAll(grabOrders);
-                            mTakeListAdapter.notifyDataSetChanged();
+                            mSendExpressAdapter.notifyDataSetChanged();
                             mTvEmptyView.setVisibility(View.GONE);
                             ((MainActivity)getActivity()).dismissProgressDialog();
-                            Log.d(TAG, "获取上门取件信息 = " + grabOrders.toString());
+                            Log.d(TAG, "获取待发货信息 = " + grabOrders.toString());
                         } else {
                             mGrabOrders.clear();
                             mTvEmptyView.setVisibility(View.VISIBLE);
                         }
                     }
-
                     @Override
                     public void onFail(List<GrabOrder> grabOrders) {
-
                     }
                 });
             }
@@ -93,7 +91,8 @@ public class ComeDoorTakeFragment extends Fragment {
     }
 
     private void setAdapter() {
-        mTakeListAdapter = new ComeDoorTakeListAdapter(getContext(), mGrabOrders);
-        mLvTakeOrder.setAdapter(mTakeListAdapter);
+        mSendExpressAdapter = new SendExpressListAdapter(getContext(), mGrabOrders);
+        mLvSendExpress.setAdapter(mSendExpressAdapter);
     }
+
 }
