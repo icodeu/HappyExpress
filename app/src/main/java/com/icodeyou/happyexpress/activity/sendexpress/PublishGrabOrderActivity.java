@@ -11,10 +11,12 @@ import android.widget.Button;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
 import com.icodeyou.happyexpress.bean.ExpressInfo;
+import com.icodeyou.happyexpress.bean.GrabOrder;
 import com.icodeyou.happyexpress.model.RequestCallback;
 import com.icodeyou.happyexpress.model.RequestModel;
 import com.icodeyou.happyexpress.view.TimePassageView;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,12 +32,12 @@ public class PublishGrabOrderActivity extends BaseActivity {
     public static final String RECV_MOBILE = "recvMobile";
     public static final String EXTRA_BUNDLE = "extra_bundle";
 
-    public static final String EXTRA_OBJECT_ID = "extra_object_id";
+    public static final String EXTRA_EXPRESS_INFO = "extra_express_info";
 
     private TimePassageView mTimePassageView;
     private Button mBtnCancelOrder;
 
-    private String mObjectId;
+    private ExpressInfo mExpressInfo;
 
     private static final long POLL_PERIOD_TIME = 2000;
     private Timer mPollTimer;
@@ -60,15 +62,16 @@ public class PublishGrabOrderActivity extends BaseActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                RequestModel.getExpressInfoByObjectId(PublishGrabOrderActivity.this, mObjectId, new RequestCallback<ExpressInfo>() {
+                RequestModel.getGrabOrderInfoByExpressInfo(PublishGrabOrderActivity.this, mExpressInfo, new RequestCallback<List<GrabOrder>>() {
                     @Override
-                    public void onSuccess(ExpressInfo expressInfo) {
-                        Log.d(TAG, expressInfo.toString());
+                    public void onSuccess(List<GrabOrder> grabOrders) {
+                        Log.d(TAG, "pool OnSuccess");
+                        if (grabOrders != null) {
+                            Log.d(TAG, grabOrders.toString());
+                        }
                     }
-
                     @Override
-                    public void onFail(ExpressInfo expressInfo) {
-
+                    public void onFail(List<GrabOrder> grabOrders) {
                     }
                 });
             }
@@ -78,8 +81,9 @@ public class PublishGrabOrderActivity extends BaseActivity {
 
     private void getDataPassed() {
         Intent intent = getIntent();
-        if (intent.hasExtra(EXTRA_OBJECT_ID)) {
-            mObjectId = intent.getStringExtra(EXTRA_OBJECT_ID);
+        if (intent.hasExtra(EXTRA_EXPRESS_INFO)) {
+            mExpressInfo = (ExpressInfo) intent.getSerializableExtra(EXTRA_EXPRESS_INFO);
+            Log.d(TAG, "getDataPassed expressInfo = " + mExpressInfo);
         }
     }
 

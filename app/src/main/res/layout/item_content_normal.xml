@@ -57,6 +57,11 @@
                 <!--android:layout_centerVertical="true"-->
                 <!--fresco:placeholderImage="@drawable/empty_author"-->
                 <!--fresco:roundAsCircle="true" />-->
+            <ImageView
+                android:id="@+id/id_author_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true" />
 
             <!-- 作者姓名 -->
             <TextView

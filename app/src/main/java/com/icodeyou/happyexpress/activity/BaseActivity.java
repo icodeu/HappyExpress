@@ -7,8 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.util.ConstantUtil;
-import com.icodeyou.happyexpress.util.PreferencesUtils;
+import com.icodeyou.library.util.ConstantUtil;
+import com.icodeyou.library.util.PreferencesUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

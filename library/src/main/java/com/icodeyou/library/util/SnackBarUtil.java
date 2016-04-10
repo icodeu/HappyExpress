@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.util;
+package com.icodeyou.library.util;
 
 import android.support.design.widget.Snackbar;
 import android.view.View;

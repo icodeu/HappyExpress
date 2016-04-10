@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.util.SnackBarUtil;
+import com.icodeyou.library.util.SnackBarUtil;
 
 public class SignupActivity extends BaseActivity {
 

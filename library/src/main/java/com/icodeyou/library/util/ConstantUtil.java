@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.util;
+package com.icodeyou.library.util;
 
 /**
  * 保存设置中的常量KEY，目前主要保存Preference的KEY

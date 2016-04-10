@@ -3,15 +3,16 @@ package com.icodeyou.happyexpress.bean;
 import android.content.Context;
 import android.util.Log;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by huan on 16/4/8.
  */
-public class ExpressInfo extends BmobObject{
+public class ExpressInfo extends BmobObject implements Serializable{
 
     /**
      * 寄件人信息
@@ -32,13 +33,8 @@ public class ExpressInfo extends BmobObject{
      */
     private User publishedUser;
 
-    /**
-     * 抢单的快递员
-     */
-    private User courierUser;
-
-    // 抢单时间
-    private BmobDate grabOrderDate;
+    private Integer type; // [抢单0 普通1]
+    private Integer status; // [正在发布0 被抢单1 完成2 取消3]
 
     public static void createThisTable(Context context) {
         ExpressInfo info = new ExpressInfo();
@@ -52,6 +48,9 @@ public class ExpressInfo extends BmobObject{
 
         User pubUser = BmobUser.getCurrentUser(context, User.class);
         info.setPublishedUser(pubUser);
+
+        info.setType(0);
+        info.setStatus(0);
 
         info.save(context, new SaveListener() {
             @Override
@@ -123,20 +122,20 @@ public class ExpressInfo extends BmobObject{
     }
 
 
-    public User getCourierUser() {
-        return courierUser;
+    public Integer getType() {
+        return type;
     }
 
-    public void setCourierUser(User courierUser) {
-        this.courierUser = courierUser;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public BmobDate getGrabOrderDate() {
-        return grabOrderDate;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setGrabOrderDate(BmobDate grabOrderDate) {
-        this.grabOrderDate = grabOrderDate;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
@@ -149,6 +148,8 @@ public class ExpressInfo extends BmobObject{
                 ", recvName='" + recvName + '\'' +
                 ", recvMobile='" + recvMobile + '\'' +
                 ", publishedUser=" + publishedUser +
+                ", type=" + type +
+                ", status=" + status +
                 '}';
     }
 }

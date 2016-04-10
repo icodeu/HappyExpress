@@ -8,13 +8,14 @@ import android.widget.EditText;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
+import com.icodeyou.happyexpress.bean.ExpressInfo;
 import com.icodeyou.happyexpress.bean.User;
 import com.icodeyou.happyexpress.model.ActivityModel;
 import com.icodeyou.happyexpress.model.RequestCallback;
 import com.icodeyou.happyexpress.model.RequestModel;
-import com.icodeyou.happyexpress.util.SnackBarUtil;
-import com.icodeyou.happyexpress.util.StringUtils;
-import com.icodeyou.happyexpress.util.ViewFinder;
+import com.icodeyou.library.util.SnackBarUtil;
+import com.icodeyou.library.util.StringUtils;
+import com.icodeyou.library.util.ViewFinder;
 
 import cn.bmob.v3.BmobUser;
 
@@ -67,15 +68,17 @@ public class GrabOrderActivity extends BaseActivity {
 
         showProgressDialog("请稍等，正在发布订单");
 
-        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), new RequestCallback<String>() {
+        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), 0, 0, new RequestCallback<ExpressInfo>() {
+
             @Override
-            public void onSuccess(String objectId) {
+            public void onSuccess(ExpressInfo expressInfo) {
                 dismissProgressDialog();
-                Log.d("wanghuan", "objectId = " + objectId);
-                ActivityModel.goToPublishGrabOrderActivity(GrabOrderActivity.this, objectId);
+                Log.d("wanghuan", "objectId = " + expressInfo.getObjectId());
+                ActivityModel.goToPublishGrabOrderActivity(GrabOrderActivity.this, expressInfo);
             }
+
             @Override
-            public void onFail(String msg) {
+            public void onFail(ExpressInfo expressInfo) {
 
             }
         });

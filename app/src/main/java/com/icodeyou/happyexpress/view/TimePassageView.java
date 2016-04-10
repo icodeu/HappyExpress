@@ -8,11 +8,10 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.util.ScreenUtils;
+import com.icodeyou.library.util.ScreenUtils;
 
 /**
  * Created by huan on 16/4/5.
@@ -180,7 +179,7 @@ public class TimePassageView extends View {
             if (mGreaterCircleRadius[i] >= INNER_RADIUS) {
                 mGreaterCirclePaints[i].setAlpha(mGreaterCircleAlpha[i]);
                 canvas.drawCircle(mCenterX, mCenterY, mGreaterCircleRadius[i], mGreaterCirclePaints[i]);
-                Log.d("wanghuan", i + " radius " + " = " + mGreaterCircleRadius[i] + " alpha = " + mGreaterCircleAlpha[i]);
+//                Log.d("wanghuan", i + " radius " + " = " + mGreaterCircleRadius[i] + " alpha = " + mGreaterCircleAlpha[i]);
             }
         }
 //        for (int i = 0; i < MAX_GREATER_COUNT; i++) {

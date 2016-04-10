@@ -8,8 +8,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.util.ConstantUtil;
-import com.icodeyou.happyexpress.util.PreferencesUtils;
+import com.icodeyou.library.util.ConstantUtil;
+import com.icodeyou.library.util.PreferencesUtils;
 
 
 public class SettingsActivity extends BaseActivity {
