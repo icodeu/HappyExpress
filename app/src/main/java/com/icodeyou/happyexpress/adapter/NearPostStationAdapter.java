@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.bean.PostStation;
+import com.icodeyou.library.util.adapter.CommonAdapter;
 
 import java.util.List;
 

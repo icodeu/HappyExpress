@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.bean.LogisticsInfo;
+import com.icodeyou.library.util.adapter.CommonAdapter;
 
 import java.util.List;
 

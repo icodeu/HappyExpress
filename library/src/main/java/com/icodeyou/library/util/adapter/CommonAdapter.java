@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.adapter;
+package com.icodeyou.library.util.adapter;
 
 import android.content.Context;
 import android.util.SparseArray;
