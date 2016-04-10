@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_content_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="15dp"
+    android:orientation="vertical">
+
+    <!-- 图片描述 使用Fresco加载图片-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/id_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+         />
+    <!--fresco:placeholderImage="@drawable/empty_news"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_white"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/id_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:maxLines="3"
+            android:text="Title"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- 概要 -->
+        <TextView
+            android:id="@+id/id_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Desc"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <!-- 作者头像、姓名、发布时间、点赞数等-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <!-- 作者头像 用Fresco代替 -->
+            <!--<com.facebook.drawee.view.SimpleDraweeView-->
+                <!--android:id="@+id/id_author_img"-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--fresco:placeholderImage="@drawable/empty_author"-->
+                <!--fresco:roundAsCircle="true" />-->
+            <ImageView
+                android:id="@+id/id_author_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true" />
+
+            <!-- 作者姓名 -->
+            <TextView
+                android:id="@+id/id_tv_author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/id_author_img"
+                android:text="authorName"
+                android:textColor="@color/material_grey_300"
+                android:textSize="12sp" />
+
+            <!-- 发布时间 -->
+            <TextView
+                android:id="@+id/id_tv_post_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/id_tv_author_name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/id_author_img"
+                android:text="postTime"
+                android:textColor="@color/material_grey_300"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <!-- 分隔条 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/zircon" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <!-- 点赞图标 -->
+            <ImageView
+                android:id="@+id/id_iv_star"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_like_green_50" />
+
+            <!-- 点赞数量 -->
+            <TextView
+                android:id="@+id/id_tv_star_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/id_iv_star"
+                android:text="starCount"
+                android:textColor="@color/material_grey_300"
+                android:textSize="12sp" />
+
+            <!-- 收藏图标 -->
+            <ImageView
+                android:id="@+id/id_iv_collect"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_bookmark_green_50" />
+
+            <!-- 回复数量 -->
+            <TextView
+                android:id="@+id/id_tv_response_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/id_iv_collect"
+                android:text="responseCount"
+                android:textColor="@color/material_grey_300"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

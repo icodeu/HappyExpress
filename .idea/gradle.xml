@@ -10,16 +10,16 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MailMan" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/courier" />
             <option value="$PROJECT_DIR$/library" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/MailMan" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/courier" />
             <option value="$PROJECT_DIR$/library" />
           </set>
         </option>

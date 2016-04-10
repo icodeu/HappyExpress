@@ -1,1 +1,1 @@
-include ':app', ':courier', ':library'
+include ':app', ':library', ':MailMan'

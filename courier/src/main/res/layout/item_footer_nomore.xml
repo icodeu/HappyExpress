@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!-- RecyclerView Footer 加载更多-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- 没有更多内容时显示TextView -->
+    <TextView
+        android:id="@+id/id_tv_nomore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="没有更多内容了" />
+
+</LinearLayout>
