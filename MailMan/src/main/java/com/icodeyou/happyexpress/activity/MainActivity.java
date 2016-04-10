@@ -172,7 +172,7 @@ public class MainActivity extends BaseActivity {
         mTitles = new String[4];
         mTitles[0] = "抢单";
         mTitles[1] = "待上门取件";
-        mTitles[2] = "驿站";
+        mTitles[2] = "待发货";
         mTitles[3] = "我的";
         HomeFragment homeFragment = new HomeFragment();
         mFragments.add(homeFragment);

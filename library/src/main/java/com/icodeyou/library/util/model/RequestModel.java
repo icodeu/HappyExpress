@@ -163,4 +163,25 @@ public class RequestModel {
         });
     }
 
+    /**
+     * 查询待上门取件的订单 GrabOrder
+     */
+    public static void updateGrabOrderAfterTakeExpress(Context context, GrabOrder grabOrder, final RequestCallback<String> callback) {
+        // Update isTake -> true
+        GrabOrder newOrder = new GrabOrder();
+        newOrder.setTaked(true);
+        newOrder.update(context, grabOrder.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess("success");
+                Log.d(TAG, "onSuccess 更新isTaked->true");
+            }
+            @Override
+            public void onFailure(int i, String s) {
+                callback.onSuccess(s);
+                Log.d(TAG, "onFailure 更新isTaked->true");
+            }
+        });
+    }
+
 }
