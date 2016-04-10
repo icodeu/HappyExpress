@@ -126,38 +126,6 @@ public class ContentFragment extends Fragment implements SwipeRefreshLayout.OnRe
 //        });
     }
 
-
-    /**
-     * 将网络上获取的数据保存到NewsListBean中
-     */
-    /*
-    private void saveToNewsListBean(List<AVObject> list) {
-        // 获取到了新内容
-        if (list.size() != 0) {
-            for (AVObject item : list) {
-                ArticleList articleList = new ArticleList();
-                articleList.setId(item.getString(ArticleList.KEY_ID));
-                articleList.setTitle(item.getString(ArticleList.KEY_TITLE));
-                articleList.setDesc(item.getString(ArticleList.KEY_DESC));
-                articleList.setImgUrl(item.getString(ArticleList.KEY_IMAGE_URL));
-                articleList.setAuthorName(item.getString(ArticleList.KEY_AUTHOR_NAME));
-                articleList.setAuthorImgUrl(item.getString(ArticleList.KEY_AUTHOR_IMG_URL));
-                articleList.setPostTime(item.getString(ArticleList.KEY_POST_TIME));
-                articleList.setStarCount(item.getInt(ArticleList.KEY_STAR_COUNT));
-                articleList.setCategory(item.getString(ArticleList.KEY_CATEGORY));
-                articleList.setArticleUrl(item.getString(ArticleList.KEY_ARTICLE_URL));
-                articleList.setResponseCount(item.getInt(ArticleList.KEY_RESPONSE_COUNT));
-                mArticleList.add(articleList);
-            }
-        } else {
-            // 没有新内容了
-            mAdapter.setHasMoreImpl(false);
-        }
-        // 更新RecyclerView的数据显示
-        refreshRecyclerView();
-    }
-    */
-
     /**
      * 更新RecyclerView的数据显示
      */

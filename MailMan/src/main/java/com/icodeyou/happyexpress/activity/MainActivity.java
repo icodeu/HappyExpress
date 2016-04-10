@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.ContentViewPagerAdapter;
+import com.icodeyou.happyexpress.fragment.ComeDoorTakeFragment;
 import com.icodeyou.happyexpress.fragment.ContentFragment;
 import com.icodeyou.happyexpress.fragment.HomeFragment;
 
@@ -170,12 +171,14 @@ public class MainActivity extends BaseActivity {
         mFragments = new ArrayList<Fragment>();
         mTitles = new String[4];
         mTitles[0] = "抢单";
-        mTitles[1] = "历史记录";
+        mTitles[1] = "待上门取件";
         mTitles[2] = "驿站";
         mTitles[3] = "我的";
         HomeFragment homeFragment = new HomeFragment();
         mFragments.add(homeFragment);
-        for (int i = 1; i < mTitles.length; i++) {
+        ComeDoorTakeFragment comeDoorTakeFragment = new ComeDoorTakeFragment();
+        mFragments.add(comeDoorTakeFragment);
+        for (int i = 2; i < mTitles.length; i++) {
             ContentFragment fragment = new ContentFragment();
             Bundle bundle = new Bundle();
             bundle.putString(ContentFragment.BUNDLE_KEY_CATEGORY, mTitles[i]);

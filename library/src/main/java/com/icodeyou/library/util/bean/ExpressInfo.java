@@ -14,6 +14,14 @@ import cn.bmob.v3.listener.SaveListener;
  */
 public class ExpressInfo extends BmobObject implements Serializable{
 
+    public static final int TYPE_GRAB = 0;
+    public static final int TYPE_COMMON = 1;
+
+    public static final int STATUS_PUBLISHING = 0;
+    public static final int STATUS_GRABED = 1;
+    public static final int STATUS_DONE = 2;
+    public static final int STATUS_CANCEL = 3;
+
     /**
      * 寄件人信息
      */
@@ -36,6 +44,8 @@ public class ExpressInfo extends BmobObject implements Serializable{
     private Integer type; // [抢单0 普通1]
     private Integer status; // [正在发布0 被抢单1 完成2 取消3]
 
+    private Double money;
+
     public static void createThisTable(Context context) {
         ExpressInfo info = new ExpressInfo();
         info.setSendAddress("北京交通大学");
@@ -51,6 +61,7 @@ public class ExpressInfo extends BmobObject implements Serializable{
 
         info.setType(0);
         info.setStatus(0);
+        info.setMoney(10.0);
 
         info.save(context, new SaveListener() {
             @Override
@@ -138,6 +149,14 @@ public class ExpressInfo extends BmobObject implements Serializable{
         this.status = status;
     }
 
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
     @Override
     public String toString() {
         return "ExpressInfo{" +
@@ -150,6 +169,7 @@ public class ExpressInfo extends BmobObject implements Serializable{
                 ", publishedUser=" + publishedUser +
                 ", type=" + type +
                 ", status=" + status +
+                ", money=" + money +
                 '}';
     }
 }

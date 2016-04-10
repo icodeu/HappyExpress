@@ -21,7 +21,8 @@ public class GrabOrder extends BmobObject implements Serializable{
     private User courierUser; // 抢单的快递员
     private BmobDate grabTime; // 抢单时间
     private String takeCode;// 取件码
-    private String money; // 运费
+    private boolean isPayed; // 用户是否付款
+    private Boolean isTaked; // 是否上门取件完成
     private String trackingNumber; //运单号
 
     public static void createThisTable(Context context) {
@@ -42,7 +43,8 @@ public class GrabOrder extends BmobObject implements Serializable{
 
         grabOrder.setGrabTime(new BmobDate(new Date()));
         grabOrder.setTakeCode(grabOrder.getObjectId());
-        grabOrder.setMoney("10.2");
+        grabOrder.setPayed(false);
+        grabOrder.setTaked(false);
         grabOrder.setTrackingNumber("1000234");
 
         grabOrder.save(context, new SaveListener() {
@@ -98,12 +100,12 @@ public class GrabOrder extends BmobObject implements Serializable{
         this.takeCode = takeCode;
     }
 
-    public String getMoney() {
-        return money;
+    public boolean isPayed() {
+        return isPayed;
     }
 
-    public void setMoney(String money) {
-        this.money = money;
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 
     public String getTrackingNumber() {
@@ -112,5 +114,27 @@ public class GrabOrder extends BmobObject implements Serializable{
 
     public void setTrackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
+    }
+
+    public Boolean getTaked() {
+        return isTaked;
+    }
+
+    public void setTaked(Boolean taked) {
+        isTaked = taked;
+    }
+
+    @Override
+    public String toString() {
+        return "GrabOrder{" +
+                "expressInfo=" + expressInfo +
+                ", publishedUser=" + publishedUser +
+                ", courierUser=" + courierUser +
+                ", grabTime=" + grabTime +
+                ", takeCode='" + takeCode + '\'' +
+                ", isPayed=" + isPayed +
+                ", isTaked=" + isTaked +
+                ", trackingNumber='" + trackingNumber + '\'' +
+                '}';
     }
 }
