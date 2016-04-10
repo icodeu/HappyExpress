@@ -10,11 +10,11 @@ import android.widget.Button;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
-import com.icodeyou.happyexpress.model.RequestCallback;
-import com.icodeyou.happyexpress.model.RequestModel;
 import com.icodeyou.happyexpress.view.TimePassageView;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
+import com.icodeyou.library.util.model.RequestCallback;
+import com.icodeyou.library.util.model.RequestModel;
 
 import java.util.List;
 import java.util.Timer;

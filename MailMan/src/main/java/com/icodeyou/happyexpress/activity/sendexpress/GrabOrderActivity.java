@@ -9,13 +9,13 @@ import android.widget.EditText;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
 import com.icodeyou.happyexpress.model.ActivityModel;
-import com.icodeyou.happyexpress.model.RequestCallback;
-import com.icodeyou.happyexpress.model.RequestModel;
 import com.icodeyou.library.util.SnackBarUtil;
 import com.icodeyou.library.util.StringUtils;
 import com.icodeyou.library.util.ViewFinder;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.User;
+import com.icodeyou.library.util.model.RequestCallback;
+import com.icodeyou.library.util.model.RequestModel;
 
 import cn.bmob.v3.BmobUser;
 

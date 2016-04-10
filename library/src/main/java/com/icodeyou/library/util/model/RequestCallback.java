@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.model;
+package com.icodeyou.library.util.model;
 
 /**
  * Created by huan on 16/4/8.

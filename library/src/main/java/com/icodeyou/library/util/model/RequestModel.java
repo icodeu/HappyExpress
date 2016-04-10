@@ -1,4 +1,4 @@
-package com.icodeyou.happyexpress.model;
+package com.icodeyou.library.util.model;
 
 import android.content.Context;
 import android.util.Log;
