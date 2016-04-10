@@ -127,6 +127,7 @@ public class RequestModel {
         }
         grabOrder.setTakeCode(codeBuilder.toString());
         grabOrder.setTaked(false);
+        grabOrder.setSend(false);
 
         grabOrder.save(context, new SaveListener() {
             @Override
@@ -190,10 +191,9 @@ public class RequestModel {
     public static void querySendExpressInfo(Context context, final RequestCallback<List<GrabOrder>> callback) {
         BmobQuery<GrabOrder> query = new BmobQuery<GrabOrder>();
         query.addWhereEqualTo("courierUser", BmobUser.getCurrentUser(context, User.class));
-        query.addWhereEqualTo("trackingNumber", null);
+        query.addWhereEqualTo("isSend", false);
         query.addWhereEqualTo("isTaked", true);
         query.include("expressInfo");
-        Log.d(TAG, "doing 查询待发货的订单");
         query.findObjects(context, new FindListener<GrabOrder>() {
             @Override
             public void onSuccess(List<GrabOrder> list) {
@@ -213,6 +213,7 @@ public class RequestModel {
         // Update trackingNumber
         GrabOrder newOrder = new GrabOrder();
         newOrder.setTrackingNumber(trackingNumber);
+        newOrder.setSend(true);
         newOrder.update(context, grabOrder.getObjectId(), new UpdateListener() {
             @Override
             public void onSuccess() {
@@ -223,6 +224,27 @@ public class RequestModel {
             public void onFailure(int i, String s) {
                 callback.onSuccess(s);
                 Log.d(TAG, "onFailure 更新trackingNumber");
+            }
+        });
+    }
+
+    /**
+     * 查询已完成的订单 GrabOrder
+     */
+    public static void queryCompleteExpressInfo(Context context, final RequestCallback<List<GrabOrder>> callback) {
+        BmobQuery<GrabOrder> query = new BmobQuery<GrabOrder>();
+        query.addWhereEqualTo("courierUser", BmobUser.getCurrentUser(context, User.class));
+        query.addWhereEqualTo("isSend", true);
+        query.addWhereEqualTo("isTaked", true);
+        query.include("expressInfo");
+        query.findObjects(context, new FindListener<GrabOrder>() {
+            @Override
+            public void onSuccess(List<GrabOrder> list) {
+                Log.d(TAG, "onSuccess 查询已完成的订单 " + list.toString());
+                callback.onSuccess(list);
+            }
+            @Override
+            public void onError(int i, String s) {
             }
         });
     }

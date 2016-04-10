@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.ContentViewPagerAdapter;
 import com.icodeyou.happyexpress.fragment.ComeDoorTakeFragment;
-import com.icodeyou.happyexpress.fragment.ContentFragment;
+import com.icodeyou.happyexpress.fragment.CompleteExpressFragment;
 import com.icodeyou.happyexpress.fragment.HomeFragment;
 import com.icodeyou.happyexpress.fragment.SendExpressFragment;
 
@@ -181,13 +181,15 @@ public class MainActivity extends BaseActivity {
         mFragments.add(comeDoorTakeFragment);
         SendExpressFragment sendExpressFragment = new SendExpressFragment();
         mFragments.add(sendExpressFragment);
-        for (int i = 3; i < mTitles.length; i++) {
-            ContentFragment fragment = new ContentFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(ContentFragment.BUNDLE_KEY_CATEGORY, mTitles[i]);
-            fragment.setArguments(bundle);
-            mFragments.add(fragment);
-        }
+        CompleteExpressFragment completeExpressFragment = new CompleteExpressFragment();
+        mFragments.add(completeExpressFragment);
+//        for (int i = 4; i < mTitles.length; i++) {
+//            ContentFragment fragment = new ContentFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putString(ContentFragment.BUNDLE_KEY_CATEGORY, mTitles[i]);
+//            fragment.setArguments(bundle);
+//            mFragments.add(fragment);
+//        }
     }
 
     @Override

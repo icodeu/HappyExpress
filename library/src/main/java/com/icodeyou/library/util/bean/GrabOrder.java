@@ -23,6 +23,7 @@ public class GrabOrder extends BmobObject implements Serializable{
     private String takeCode;// 取件码
     private boolean isPayed; // 用户是否付款
     private Boolean isTaked; // 是否上门取件完成
+    private Boolean isSend; // 是否发货完成
     private String trackingNumber; //运单号
 
     public static void createThisTable(Context context) {
@@ -45,6 +46,7 @@ public class GrabOrder extends BmobObject implements Serializable{
         grabOrder.setTakeCode(grabOrder.getObjectId());
         grabOrder.setPayed(false);
         grabOrder.setTaked(false);
+        grabOrder.setSend(false);
         grabOrder.setTrackingNumber("1000234");
 
         grabOrder.save(context, new SaveListener() {
@@ -122,6 +124,14 @@ public class GrabOrder extends BmobObject implements Serializable{
 
     public void setTaked(Boolean taked) {
         isTaked = taked;
+    }
+
+    public Boolean getSend() {
+        return isSend;
+    }
+
+    public void setSend(Boolean send) {
+        isSend = send;
     }
 
     @Override
