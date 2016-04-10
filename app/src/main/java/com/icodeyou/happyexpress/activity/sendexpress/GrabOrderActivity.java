@@ -6,12 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
 import com.icodeyou.happyexpress.model.ActivityModel;
 import com.icodeyou.library.util.SnackBarUtil;
 import com.icodeyou.library.util.StringUtils;
 import com.icodeyou.library.util.ViewFinder;
+import com.icodeyou.library.util.amap.AMapUtil;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.User;
 import com.icodeyou.library.util.model.RequestCallback;
@@ -20,9 +24,15 @@ import com.icodeyou.library.util.model.RequestModel;
 import cn.bmob.v3.BmobUser;
 
 public class GrabOrderActivity extends BaseActivity {
+    private static final String TAG = "GrabOrderActivity";
 
     private Button mBtnSendExpress;
     private EditText mEtSendAddress, mEtSendName, mEtSendMobile, mEtRecvAddress, mEtRecvName, mEtRecvMobile;
+
+    // 定位用 mLocationClient
+    private AMapLocationClient mLocationClient;
+    private double mSendLongtitude = 0, mSendLatitude = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +42,33 @@ public class GrabOrderActivity extends BaseActivity {
         setToolbar();
 
         initView();
+
+        getLocation();
+    }
+
+    /**
+     * 获取定位信息
+     */
+    private void getLocation() {
+        mLocationClient = AMapUtil.startLocation(getApplicationContext(), new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        //定位成功回调信息，设置相关消息
+                        Log.d(TAG, "aMap = " + aMapLocation.toString());
+                        mEtSendAddress.setText(aMapLocation.getAddress());
+                        mSendLatitude = aMapLocation.getLatitude();
+                        mSendLongtitude = aMapLocation.getLongitude();
+                    } else {
+                        //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                        Log.e("AmapError","location Error, ErrCode:"
+                                + aMapLocation.getErrorCode() + ", errInfo:"
+                                + aMapLocation.getErrorInfo());
+                    }
+                }
+            }
+        });
     }
 
     private void initView() {
@@ -68,30 +105,17 @@ public class GrabOrderActivity extends BaseActivity {
 
         showProgressDialog("请稍等，正在发布订单");
 
-        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), 0, 0, 0, new RequestCallback<ExpressInfo>() {
-
+        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), 0, 0, 0, mSendLongtitude, mSendLatitude, new RequestCallback<ExpressInfo>() {
             @Override
             public void onSuccess(ExpressInfo expressInfo) {
                 dismissProgressDialog();
                 Log.d("wanghuan", "objectId = " + expressInfo.getObjectId());
                 ActivityModel.goToPublishGrabOrderActivity(GrabOrderActivity.this, expressInfo);
             }
-
             @Override
             public void onFail(ExpressInfo expressInfo) {
-
             }
         });
-        // 直接发请求保存吧 懒得传递了
-        /*
-        Bundle bundle = new Bundle();
-        bundle.putString(PublishGrabOrderActivity.SEND_ADDRESS, sendAddress);
-        bundle.putString(PublishGrabOrderActivity.SEND_MOBILE, sendMobile);
-        bundle.putString(PublishGrabOrderActivity.SEND_NAME, sendName);
-        bundle.putString(PublishGrabOrderActivity.RECV_ADDRESS, recvAddress);
-        bundle.putString(PublishGrabOrderActivity.RECV_MOBILE, recvMobile);
-        bundle.putString(PublishGrabOrderActivity.RECV_NAME, recvName);
-        */
     }
 
 }

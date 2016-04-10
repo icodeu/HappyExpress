@@ -12,21 +12,42 @@
     tools:context=".activity.sendexpress.PublishGrabOrderActivity"
     tools:showIn="@layout/activity_publish_grab_order">
 
-    <com.icodeyou.happyexpress.view.TimePassageView
-        android:id="@+id/id_timePassageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/id_btn_cancel_grab_order"
+    <!--发布抢单的view-->
+    <RelativeLayout
+        android:id="@+id/id_rl_publish_order"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/international_orange"
-        android:background="@drawable/aliuser_button_line_bg_normal"
-        android:text="取消" />
+        android:layout_height="match_parent">
+
+        <com.icodeyou.happyexpress.view.TimePassageView
+            android:id="@+id/id_timePassageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/id_btn_cancel_grab_order"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/international_orange"
+            android:background="@drawable/aliuser_button_line_bg_normal"
+            android:text="取消" />
+    </RelativeLayout>
+
+    <!--抢单成功的view-->
+    <RelativeLayout
+        android:id="@+id/id_rl_grabed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/id_tv_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="successText"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

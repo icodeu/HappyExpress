@@ -46,6 +46,12 @@ public class ExpressInfo extends BmobObject implements Serializable{
 
     private Double money;
 
+    /**
+     * 发件人所在经纬度
+     */
+    private Double sendLongtitude;
+    private Double sendLatitude;
+
     public static void createThisTable(Context context) {
         ExpressInfo info = new ExpressInfo();
         info.setSendAddress("北京交通大学");
@@ -62,6 +68,9 @@ public class ExpressInfo extends BmobObject implements Serializable{
         info.setType(0);
         info.setStatus(0);
         info.setMoney(10.0);
+
+        info.setSendLongtitude(89.9);
+        info.setSendLatitude(98.9);
 
         info.save(context, new SaveListener() {
             @Override
@@ -157,6 +166,22 @@ public class ExpressInfo extends BmobObject implements Serializable{
         this.money = money;
     }
 
+    public Double getSendLongtitude() {
+        return sendLongtitude;
+    }
+
+    public void setSendLongtitude(Double sendLongtitude) {
+        this.sendLongtitude = sendLongtitude;
+    }
+
+    public Double getSendLatitude() {
+        return sendLatitude;
+    }
+
+    public void setSendLatitude(Double sendLatitude) {
+        this.sendLatitude = sendLatitude;
+    }
+
     @Override
     public String toString() {
         return "ExpressInfo{" +
@@ -170,6 +195,8 @@ public class ExpressInfo extends BmobObject implements Serializable{
                 ", type=" + type +
                 ", status=" + status +
                 ", money=" + money +
+                ", sendLongtitude=" + sendLongtitude +
+                ", sendLatitude=" + sendLatitude +
                 '}';
     }
 }

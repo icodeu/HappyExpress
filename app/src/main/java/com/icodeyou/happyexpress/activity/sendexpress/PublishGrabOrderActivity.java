@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
 import com.icodeyou.happyexpress.view.TimePassageView;
+import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
 import com.icodeyou.library.util.model.RequestCallback;
@@ -20,22 +23,23 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class PublishGrabOrderActivity extends BaseActivity {
 
     private static final String TAG = "PublishActivity";
-
-    public static final String SEND_ADDRESS = "sendAddress";
-    public static final String SEND_NAME = "sendName";
-    public static final String SEND_MOBILE = "sendMobile";
-    public static final String RECV_ADDRESS = "recvAddress";
-    public static final String RECV_NAME = "recvName";
-    public static final String RECV_MOBILE = "recvMobile";
-    public static final String EXTRA_BUNDLE = "extra_bundle";
-
     public static final String EXTRA_EXPRESS_INFO = "extra_express_info";
 
     private TimePassageView mTimePassageView;
     private Button mBtnCancelOrder;
+
+    @Bind(R.id.id_rl_publish_order)
+    RelativeLayout mRlPublishOrder;
+    @Bind(R.id.id_rl_grabed)
+    RelativeLayout mRlGrabedSuccess;
+    @Bind(R.id.id_tv_success)
+    TextView mTvSuccess;
 
     private ExpressInfo mExpressInfo;
 
@@ -46,6 +50,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publish_grab_order);
+        ButterKnife.bind(this);
 
         setToolbar();
         initView();
@@ -66,8 +71,13 @@ public class PublishGrabOrderActivity extends BaseActivity {
                     @Override
                     public void onSuccess(List<GrabOrder> grabOrders) {
                         Log.d(TAG, "pool OnSuccess");
-                        if (grabOrders != null) {
-                            Log.d(TAG, grabOrders.toString());
+                        if (!CollectionUtil.isEmpty(grabOrders)) {
+                            Log.d(TAG, "有人抢单啦 " + grabOrders.toString());
+                            mPollTimer.cancel();
+                            // setview
+                            mRlPublishOrder.setVisibility(View.GONE);
+                            mRlGrabedSuccess.setVisibility(View.VISIBLE);
+                            mTvSuccess.setText(grabOrders.get(0).getTakeCode() + "  " + grabOrders.get(0).toString());
                         }
                     }
                     @Override
@@ -106,6 +116,9 @@ public class PublishGrabOrderActivity extends BaseActivity {
                 builder.show();
             }
         });
+
+        mRlPublishOrder.setVisibility(View.VISIBLE);
+        mRlGrabedSuccess.setVisibility(View.GONE);
     }
 
     @Override

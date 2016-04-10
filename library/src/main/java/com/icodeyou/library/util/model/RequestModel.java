@@ -28,7 +28,7 @@ public class RequestModel {
     /**
      * 发布订单后保存快递基本信息
      */
-    public static void saveExpressInfo(Context context, String sendAddress, String sendName, String sendMobile, String recvAddress, String recvName, String recvMobile, User pubUser, int type, int status, double money, final RequestCallback<ExpressInfo> callback) {
+    public static void saveExpressInfo(Context context, String sendAddress, String sendName, String sendMobile, String recvAddress, String recvName, String recvMobile, User pubUser, int type, int status, double money, double sendLongtitude, double sendLatitude, final RequestCallback<ExpressInfo> callback) {
         final ExpressInfo info = new ExpressInfo();
         info.setSendAddress(sendAddress);
         info.setSendName(sendName);
@@ -40,6 +40,8 @@ public class RequestModel {
         info.setType(type);
         info.setStatus(status);
         info.setMoney(money);
+        info.setSendLongtitude(sendLongtitude);
+        info.setSendLatitude(sendLatitude);
 
         info.save(context, new SaveListener() {
             @Override
@@ -61,6 +63,8 @@ public class RequestModel {
     public static void getGrabOrderInfoByExpressInfo(Context context, ExpressInfo expressInfo, final RequestCallback<List<GrabOrder>> callback) {
         BmobQuery<GrabOrder> query = new BmobQuery<GrabOrder>();
         query.addWhereEqualTo("expressInfo", expressInfo);
+        query.include("publishedUser");
+        query.include("courierUser");
         query.findObjects(context, new FindListener<GrabOrder>() {
             @Override
             public void onSuccess(List<GrabOrder> list) {
