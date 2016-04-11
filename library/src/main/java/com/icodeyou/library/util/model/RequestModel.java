@@ -65,13 +65,12 @@ public class RequestModel {
     public static void getGrabOrderInfoByExpressInfo(Context context, ExpressInfo expressInfo, final RequestCallback<List<GrabOrder>> callback) {
         BmobQuery<GrabOrder> query = new BmobQuery<GrabOrder>();
         query.addWhereEqualTo("expressInfo", expressInfo);
-        query.include("publishedUser");
-        query.include("courierUser");
-        query.include("expressInfo");
+        query.include("publishedUser,courierUser,expressInfo");
         query.findObjects(context, new FindListener<GrabOrder>() {
             @Override
             public void onSuccess(List<GrabOrder> list) {
                 callback.onSuccess(list);
+                Log.d(TAG, "查询GrabOrder成功 " + list.get(0).toString());
             }
 
             @Override

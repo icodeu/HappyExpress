@@ -28,6 +28,7 @@ import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
 import com.icodeyou.library.util.bean.User;
+import com.icodeyou.library.util.bmob.BmobUtil;
 import com.icodeyou.library.util.model.RequestCallback;
 import com.icodeyou.library.util.model.RequestModel;
 
@@ -170,6 +171,9 @@ public class PublishGrabOrderActivity extends BaseActivity {
         // 更新取件码和支付金额
         mTvTakeCode.setText("取件码: " + grabOrder.getTakeCode());
         mBtnPay.setText("支付: " + grabOrder.getExpressInfo().getMoney());
+        // 发送短信通知
+        BmobUtil.sendSMSWithTakeCode(PublishGrabOrderActivity.this, grabOrder.getPublishedUser().getMobilePhoneNumber(), grabOrder.getTakeCode());
+
         mGrabOrder = grabOrder;
 
 

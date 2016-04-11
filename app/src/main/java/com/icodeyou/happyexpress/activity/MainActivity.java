@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity {
         Bmob.initialize(this, "659e6c7416d6423ef6b3cd3a411e96d8");
         BP.init(this, "659e6c7416d6423ef6b3cd3a411e96d8");
 
+
         // 初始化控件 findViewById + 状态栏透明(>4.4)
         initViews();
 
