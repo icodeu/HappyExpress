@@ -1,6 +1,7 @@
 package com.icodeyou.happyexpress.activity.sendexpress;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import c.b.BP;
+import c.b.PListener;
 
 public class PublishGrabOrderActivity extends BaseActivity {
 
@@ -66,6 +69,10 @@ public class PublishGrabOrderActivity extends BaseActivity {
     @Bind(R.id.id_tv_step3)
     TextView mTvStep3;
 
+    // 收件人姓名
+
+    // 收件人地址
+
     @Bind(R.id.id_rl_publish_order)
     RelativeLayout mRlPublishOrder;
     @Bind(R.id.id_rl_grabed)
@@ -81,6 +88,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
     private AMap mAMap;
 
     private ExpressInfo mExpressInfo;
+    private GrabOrder mGrabOrder;
 
     private static final long POLL_PERIOD_TIME = 2000;
     private Timer mPollTimer;
@@ -158,6 +166,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
         // 更新取件码和支付金额
         mTvTakeCode.setText("取件码: " + grabOrder.getTakeCode());
         mBtnPay.setText("支付: " + grabOrder.getExpressInfo().getMoney());
+        mGrabOrder = grabOrder;
 
 
         // 实时在地图上更新快递员的位置
@@ -217,6 +226,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
             }
         });
 
+
         mRlPublishOrder.setVisibility(View.VISIBLE);
         mRlGrabedSuccess.setVisibility(View.GONE);
         changeToStep1();
@@ -233,8 +243,73 @@ public class PublishGrabOrderActivity extends BaseActivity {
      * 支付
      */
     private void btnPayOnClick() {
-        Log.d(TAG, "btnPayOnClick");
+        final Dialog payDialog = new Dialog(this);
+        payDialog.setContentView(R.layout.dialog_pay);
+        payDialog.setTitle("请选择支付方式:");
+        Button btnWeChatPay = (Button) payDialog.findViewById(R.id.id_btn_wechat_pay);
+        Button btnAliPay = (Button) payDialog.findViewById(R.id.id_btn_ali_pay);
+        btnWeChatPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoPay(false);
+                if (payDialog != null && payDialog.isShowing())
+                    payDialog.dismiss();
+            }
+        });
+        btnAliPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoPay(true);
+                if (payDialog != null && payDialog.isShowing())
+                    payDialog.dismiss();
+            }
+        });
+        payDialog.show();
+    }
 
+    /**
+     * 跳转到支付页面
+     */
+    private void gotoPay(boolean isAliPay) {
+        BP.pay(PublishGrabOrderActivity.this, "运费", "抢单运费", 0.01, isAliPay, new PListener() {
+            @Override
+            public void orderId(String s) {
+                Log.d(TAG, "pay orderId = " + s);
+                RequestModel.updateOrderIdAfterPayed(PublishGrabOrderActivity.this, mGrabOrder, s, new RequestCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        Log.d(TAG, "onSuccess 支付成功");
+                        changeStatusAfterPaySuccess();
+
+                    }
+                    @Override
+                    public void onFail(String s) {
+                    }
+                });
+            }
+            @Override
+            public void succeed() {
+                Log.d(TAG, "pay success");
+            }
+            @Override
+            public void fail(int i, String s) {
+                Log.d(TAG, "pay fail i = " + i + " msg = " + s);
+            }
+            @Override
+            public void unknow() {
+                Log.d(TAG, "pay unknow");
+            }
+        });
+    }
+
+    /**
+     * 支付成功后的操作
+     */
+    private void changeStatusAfterPaySuccess() {
+        mBaseToolbar.setTitle("已支付，等待接单");
+        mBtnPay.setText("已支付");
+        mBtnPay.setEnabled(false);
+        changeToStep3();
     }
 
     /**

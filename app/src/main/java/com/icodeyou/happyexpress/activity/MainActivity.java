@@ -35,6 +35,7 @@ import com.icodeyou.library.util.bean.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import c.b.BP;
 import cn.bmob.v3.Bmob;
 
 
@@ -65,6 +66,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         Bmob.initialize(this, "659e6c7416d6423ef6b3cd3a411e96d8");
+        BP.init(this, "659e6c7416d6423ef6b3cd3a411e96d8");
 
         // 初始化控件 findViewById + 状态栏透明(>4.4)
         initViews();

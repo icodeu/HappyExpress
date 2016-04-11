@@ -22,6 +22,7 @@ public class GrabOrder extends BmobObject implements Serializable{
     private BmobDate grabTime; // 抢单时间
     private String takeCode;// 取件码
     private boolean isPayed; // 用户是否付款
+    private String orderId; // 付款单号
     private Boolean isTaked; // 是否上门取件完成
     private Boolean isSend; // 是否发货完成
     private String trackingNumber; //运单号
@@ -134,6 +135,14 @@ public class GrabOrder extends BmobObject implements Serializable{
         isSend = send;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     @Override
     public String toString() {
         return "GrabOrder{" +
@@ -143,7 +152,9 @@ public class GrabOrder extends BmobObject implements Serializable{
                 ", grabTime=" + grabTime +
                 ", takeCode='" + takeCode + '\'' +
                 ", isPayed=" + isPayed +
+                ", orderId='" + orderId + '\'' +
                 ", isTaked=" + isTaked +
+                ", isSend=" + isSend +
                 ", trackingNumber='" + trackingNumber + '\'' +
                 '}';
     }

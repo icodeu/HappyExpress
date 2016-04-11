@@ -315,4 +315,26 @@ public class RequestModel {
         });
     }
 
+    /**
+     * 更新订单付款信息 GrabOrder
+     */
+    public static void updateOrderIdAfterPayed(Context context, GrabOrder grabOrder, String orderId, final RequestCallback<String> callback) {
+        // Update orderId and isPay
+        GrabOrder newOrder = new GrabOrder();
+        newOrder.setPayed(true);
+        newOrder.setOrderId(orderId);
+        newOrder.update(context, grabOrder.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess("success");
+                Log.d(TAG, "onSuccess 更新订单付款信息");
+            }
+            @Override
+            public void onFailure(int i, String s) {
+                callback.onSuccess(s);
+                Log.d(TAG, "onFailure 更新订单付款信息");
+            }
+        });
+    }
+
 }

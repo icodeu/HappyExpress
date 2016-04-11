@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <Button
+        android:id="@+id/id_btn_wechat_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="微信"/>
+
+    <Button
+        android:id="@+id/id_btn_ali_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="支付宝"/>
+
+</LinearLayout>
