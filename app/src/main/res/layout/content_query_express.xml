@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:inputType="number"
+            android:text="379359555053"
             android:hint="请输入运单号"
             android:textColor="@color/main_black"/>
     </android.support.design.widget.TextInputLayout>
@@ -38,26 +39,36 @@
         android:textColor="@color/international_orange"
         android:text="查询"/>
 
-    <RelativeLayout
+    <!-- 查询物流的结果信息 -->
+    <LinearLayout
+        android:id="@+id/id_ll_logistics_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
-        <com.icodeyou.happyexpress.view.LogisticsHeaderView
-            android:id="@+id/id_logistics_header_view"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+            <com.icodeyou.happyexpress.view.LogisticsHeaderView
+                android:id="@+id/id_logistics_header_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
 
-    <ListView
-        android:id="@+id/id_lv_logistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingTop="5dp"
-        android:background="@color/white"
-        android:divider="@null"></ListView>
+        <ListView
+            android:id="@+id/id_lv_logistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingTop="5dp"
+            android:background="@color/white"
+            android:divider="@null"></ListView>
+    </LinearLayout>
+
+
 
 </LinearLayout>

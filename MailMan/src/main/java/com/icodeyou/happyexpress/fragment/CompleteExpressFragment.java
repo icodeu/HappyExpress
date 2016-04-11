@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.activity.MainActivity;
 import com.icodeyou.happyexpress.adapter.CompleteListAdapter;
 import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.GrabOrder;
@@ -46,7 +45,6 @@ public class CompleteExpressFragment extends Fragment {
         mLvComplete = (ListView) view.findViewById(R.id.id_lv_complete_express_list);
         mTvEmptyView = (TextView) view.findViewById(R.id.id_tv_empty_view);
         mTvEmptyView.setVisibility(View.VISIBLE);
-        ((MainActivity)getActivity()).showProgressDialog("正在获取已完成订单");
 
         initData();
 
@@ -71,7 +69,6 @@ public class CompleteExpressFragment extends Fragment {
                             mGrabOrders.addAll(grabOrders);
                             mCompleteListAdapter.notifyDataSetChanged();
                             mTvEmptyView.setVisibility(View.GONE);
-                            ((MainActivity)getActivity()).dismissProgressDialog();
                             Log.d(TAG, "获取已完成订单信息 = " + grabOrders.toString());
                         } else {
                             mGrabOrders.clear();

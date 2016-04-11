@@ -34,11 +34,9 @@ public class CompleteListAdapter extends CommonAdapter<GrabOrder> {
     public void onInitView(View view, int position) {
         final GrabOrder grabOrder = (GrabOrder) getItem(position);
         TextView tvSendAddress = get(view, R.id.id_tv_send_address);
-        TextView tvDistance = get(view, R.id.id_tv_distance);
         TextView tvGrabTime = get(view, R.id.id_tv_grab_time);
 
         tvSendAddress.setText(grabOrder.getExpressInfo().getSendAddress());
-        tvDistance.setText("40m");
         tvGrabTime.setText(grabOrder.getGrabTime().getDate());
     }
 }

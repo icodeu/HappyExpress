@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.activity.MainActivity;
 import com.icodeyou.happyexpress.adapter.SendExpressListAdapter;
 import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.GrabOrder;
@@ -46,7 +45,6 @@ public class SendExpressFragment extends Fragment {
         mLvSendExpress = (ListView) view.findViewById(R.id.id_lv_send_express_list);
         mTvEmptyView = (TextView) view.findViewById(R.id.id_tv_empty_view);
         mTvEmptyView.setVisibility(View.VISIBLE);
-        ((MainActivity)getActivity()).showProgressDialog("正在获取待发货订单");
 
         initData();
 
@@ -70,7 +68,6 @@ public class SendExpressFragment extends Fragment {
                             mGrabOrders.addAll(grabOrders);
                             mSendExpressAdapter.notifyDataSetChanged();
                             mTvEmptyView.setVisibility(View.GONE);
-                            ((MainActivity)getActivity()).dismissProgressDialog();
                             Log.d(TAG, "获取待发货信息 = " + grabOrders.toString());
                         } else {
                             mGrabOrders.clear();

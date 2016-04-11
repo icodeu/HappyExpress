@@ -31,7 +31,7 @@ public class LogisticsHeaderView extends View {
 
     private static final int TEXT_SIZE = 54;
 
-    private String mStartPos = "北京", mDestPos = "天津";
+    private String mStartPos = "广州", mDestPos = "北京";
 
     static {
         mCirclePaint = new Paint();

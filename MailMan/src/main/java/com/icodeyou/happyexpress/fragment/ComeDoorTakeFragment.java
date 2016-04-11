@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.icodeyou.happyexpress.R;
-import com.icodeyou.happyexpress.activity.MainActivity;
 import com.icodeyou.happyexpress.adapter.ComeDoorTakeListAdapter;
 import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.GrabOrder;
@@ -46,7 +45,6 @@ public class ComeDoorTakeFragment extends Fragment {
         mLvTakeOrder = (ListView) view.findViewById(R.id.id_lv_come_door_order_list);
         mTvEmptyView = (TextView) view.findViewById(R.id.id_tv_empty_view);
         mTvEmptyView.setVisibility(View.VISIBLE);
-        ((MainActivity)getActivity()).showProgressDialog("正在获取待上门取件订单");
 
         initData();
 
@@ -70,7 +68,6 @@ public class ComeDoorTakeFragment extends Fragment {
                             mGrabOrders.addAll(grabOrders);
                             mTakeListAdapter.notifyDataSetChanged();
                             mTvEmptyView.setVisibility(View.GONE);
-                            ((MainActivity)getActivity()).dismissProgressDialog();
                             Log.d(TAG, "获取上门取件信息 = " + grabOrders.toString());
                         } else {
                             mGrabOrders.clear();
