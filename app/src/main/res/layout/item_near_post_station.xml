@@ -24,6 +24,17 @@
         android:layout_alignTop="@id/id_iv_post_station"/>
 
     <TextView
+        android:id="@+id/id_tv_post_station_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/id_tv_post_station_name"
+        android:text="菜鸟驿站"
+        android:layout_toRightOf="@id/id_iv_post_station"
+        android:textSize="12sp"
+        android:layout_below="@id/id_tv_post_station_name"
+        android:layout_marginTop="10dp" />
+
+    <TextView
         android:id="@+id/id_tv_post_station_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

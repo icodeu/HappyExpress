@@ -10,4 +10,5 @@
     <string name="title_activity_grab_order">GrabOrderActivity</string>
     <string name="title_activity_publish_grab_order">PublishGrabOrderActivity</string>
     <string name="title_activity_query_express">QueryExpressActivity</string>
+    <string name="title_activity_post_station_detail">PostStationDetailActivity</string>
 </resources>

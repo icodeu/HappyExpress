@@ -2,10 +2,12 @@ package com.icodeyou.happyexpress.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -14,6 +16,8 @@ import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.NearPostStationAdapter;
 import com.icodeyou.happyexpress.model.ActivityModel;
 import com.icodeyou.library.util.bean.PostStation;
+import com.icodeyou.library.util.model.RequestCallback;
+import com.icodeyou.library.util.model.RequestModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,20 +26,18 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+    private static final String TAG = "HomeFragment";
 
     private ImageView mIvPostStationMore;
     private LinearLayout mLlSendExpress;
     private LinearLayout mLlQueryExpress;
 
-
     private ListView mLvNearPostStation;
     private NearPostStationAdapter mNearPostStationAdapter;
     private List<PostStation> mPostStations;
 
-
     public HomeFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,21 +48,32 @@ public class HomeFragment extends Fragment {
         mLvNearPostStation = (ListView) view.findViewById(R.id.id_lv_near_post_station);
         mIvPostStationMore = (ImageView) view.findViewById(R.id.id_iv_near_post_station_more);
 
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         initData();
-
         setAdapter();
-
         setViewListener();
 
-        return view;
+        // 获取周边驿站列表
+        RequestModel.getNearbyPostStation(getContext(), new RequestCallback<List<PostStation>>() {
+            @Override
+            public void onSuccess(List<PostStation> postStations) {
+                mPostStations.addAll(postStations);
+                mNearPostStationAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onFail(List<PostStation> postStations) {
+            }
+        });
     }
 
     private void initData() {
         mPostStations = new ArrayList<PostStation>();
-        String imgUrl = "https://avatars1.githubusercontent.com/u/7385129?v=3&s=460";
-        mPostStations.add(new PostStation("卫生部宿舍报刊亭" ,imgUrl, 30));
-        mPostStations.add(new PostStation("卫生部宿舍报刊亭" ,imgUrl, 30));
-        mPostStations.add(new PostStation("卫生部宿舍报刊亭" ,imgUrl, 30));
     }
 
     private void setAdapter() {
@@ -93,6 +106,14 @@ public class HomeFragment extends Fragment {
                     mLvNearPostStation.setVisibility(View.GONE);
                     mIvPostStationMore.setImageResource(R.drawable.drop_down);
                 }
+            }
+        });
+
+        mLvNearPostStation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //goto 驿站详情
+                ActivityModel.goToPostStationDetailActivity(getContext(), mPostStations.get(position));
             }
         });
     }

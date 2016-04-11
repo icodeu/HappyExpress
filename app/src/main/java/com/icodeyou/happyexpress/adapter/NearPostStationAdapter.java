@@ -34,8 +34,11 @@ public class NearPostStationAdapter extends CommonAdapter<PostStation> {
     public void onInitView(View view, int position) {
         PostStation postStation = (PostStation) getItem(position);
         TextView tvPostStationName = get(view, R.id.id_tv_post_station_name);
+        TextView tvPostStationDesc = get(view, R.id.id_tv_post_station_desc);
         ImageView ivPostStation = get(view, R.id.id_iv_post_station);
+
         tvPostStationName.setText(postStation.getName());
+        tvPostStationDesc.setText(postStation.getDesc());
         Glide.with(getContext()).load(postStation.getImgUrl()).into(ivPostStation);
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
+import com.icodeyou.library.util.bean.PostStation;
 import com.icodeyou.library.util.bean.User;
 
 import java.util.Date;
@@ -245,6 +246,24 @@ public class RequestModel {
             @Override
             public void onSuccess(List<GrabOrder> list) {
                 Log.d(TAG, "onSuccess 查询已完成的订单 " + list.toString());
+                callback.onSuccess(list);
+            }
+            @Override
+            public void onError(int i, String s) {
+            }
+        });
+    }
+
+    /**
+     * 查询周边驿站列表 PostStation
+     * todo 附近功能没有实现  现在是所有驿站
+     */
+    public static void getNearbyPostStation(Context context, final RequestCallback<List<PostStation>> callback) {
+        BmobQuery<PostStation> query = new BmobQuery<PostStation>();
+        query.findObjects(context, new FindListener<PostStation>() {
+            @Override
+            public void onSuccess(List<PostStation> list) {
+                Log.d(TAG, "onSuccess 查询周边驿站列表 " + list.toString());
                 callback.onSuccess(list);
             }
             @Override

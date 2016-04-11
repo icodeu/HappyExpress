@@ -3,12 +3,14 @@ package com.icodeyou.happyexpress.model;
 import android.content.Context;
 import android.content.Intent;
 
+import com.icodeyou.happyexpress.activity.poststation.PostStationDetailActivity;
 import com.icodeyou.happyexpress.activity.queryexpress.QueryExpressActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.ComeDoorOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.GrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.PublishGrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.SendExpressActivity;
 import com.icodeyou.library.util.bean.ExpressInfo;
+import com.icodeyou.library.util.bean.PostStation;
 
 /**
  * Created by huan on 16/4/5.
@@ -50,6 +52,15 @@ public class ActivityModel {
      */
     public static void goToQueryExpressActivity(Context context) {
         Intent intent = new Intent(context, QueryExpressActivity.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 驿站详情页面
+     */
+    public static void goToPostStationDetailActivity(Context context, PostStation postStation) {
+        Intent intent = new Intent(context, PostStationDetailActivity.class);
+        intent.putExtra(PostStationDetailActivity.KEY_POST_STATION, postStation);
         context.startActivity(intent);
     }
 
