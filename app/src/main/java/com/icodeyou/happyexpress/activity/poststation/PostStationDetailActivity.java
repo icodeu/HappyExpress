@@ -1,7 +1,11 @@
 package com.icodeyou.happyexpress.activity.poststation;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -105,10 +109,15 @@ public class PostStationDetailActivity extends BaseActivity {
     }
 
     private void setViewListener() {
+        // 拨打电话
         mIvTelephone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mPostStation.getTelephone()));
+                if (ActivityCompat.checkSelfPermission(PostStationDetailActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                PostStationDetailActivity.this.startActivity(intent);
             }
         });
     }
