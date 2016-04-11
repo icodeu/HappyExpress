@@ -20,10 +20,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.ContentViewPagerAdapter;
 import com.icodeyou.happyexpress.fragment.ContentFragment;
 import com.icodeyou.happyexpress.fragment.HomeFragment;
+import com.icodeyou.library.util.ConstantUtil;
+import com.icodeyou.library.util.PreferencesUtils;
+import com.icodeyou.library.util.amap.AMapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +54,10 @@ public class MainActivity extends BaseActivity {
     private List<Fragment> mFragments;
     private ContentViewPagerAdapter mViewPagerAdapter;
 
+    // 定位用 mLocationClient
+    private AMapLocationClient mLocationClient;
+    private double mLongtitude = 0, mLatitude = 0, mLastLongtitude = 0, mLastLatitude = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +73,34 @@ public class MainActivity extends BaseActivity {
 
         // 对控件进行设置、适配、填充数据
         configViews();
+
+        // 定位，把数据保存到本地
+        mLocationClient = AMapUtil.startLocation(getApplicationContext(), new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        //定位成功回调信息，设置相关消息
+                        Log.d(TAG, "aMap = " + aMapLocation.toString());
+                        mLatitude = aMapLocation.getLatitude();
+                        mLongtitude = aMapLocation.getLongitude();
+                        // 和上一次的不同 需要更新SP
+                        if (mLastLatitude != mLatitude || mLastLongtitude != mLongtitude) {
+                            Log.d(TAG, "保存经纬度到本地 latitude = " + mLatitude + "  longtitude = " + mLongtitude);
+                            PreferencesUtils.putString(MainActivity.this, ConstantUtil.PREFER_KEY_LONGTITUDE, String.valueOf(mLongtitude));
+                            PreferencesUtils.putString(MainActivity.this, ConstantUtil.PREFER_KEY_LATITUDE, String.valueOf(mLatitude));
+                            mLastLatitude = mLatitude;
+                            mLastLongtitude = mLongtitude;
+                        }
+                    } else {
+                        //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                        Log.e("AmapError","location Error, ErrCode:"
+                                + aMapLocation.getErrorCode() + ", errInfo:"
+                                + aMapLocation.getErrorInfo());
+                    }
+                }
+            }
+        });
     }
 
     @Override

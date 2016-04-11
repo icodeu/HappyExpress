@@ -38,7 +38,7 @@
         android:id="@+id/id_tv_post_station_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30m"
+        android:text="正在获取"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/id_tv_post_station_name"/>
 

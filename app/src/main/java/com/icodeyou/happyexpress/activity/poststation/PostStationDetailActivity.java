@@ -17,6 +17,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.bumptech.glide.Glide;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
+import com.icodeyou.library.util.amap.AMapUtil;
 import com.icodeyou.library.util.bean.PostStation;
 
 import butterknife.Bind;
@@ -98,7 +99,7 @@ public class PostStationDetailActivity extends BaseActivity {
         Glide.with(this).load(mPostStation.getImgUrl()).into(mIvPostStation);
         mTvPostStationName.setText(mPostStation.getName());
         mTvPostStationDesc.setText(mPostStation.getDesc());
-        mTvPostStationDistance.setText("30m");
+        mTvPostStationDistance.setText(AMapUtil.calculateDistance(this, mPostStation.getLatitude(), mPostStation.getLongtitude()));
         mTvAddress.setText(mPostStation.getAddress());
         mTvOpenTime.setText(mPostStation.getOpenTime());
     }

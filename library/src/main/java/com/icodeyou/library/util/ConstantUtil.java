@@ -5,16 +5,14 @@ package com.icodeyou.library.util;
  */
 public class ConstantUtil {
 
-    // Item显示模式
-    public static final String PREFER_KEY_ITEM_MODE = "prefer_key_item_mode";
+    // 当前用户经度
+    public static final String PREFER_KEY_LONGTITUDE = "PREFER_KEY_LONGTITUDE";
 
-    // CollectionItem显示模式
-    public static final String PREFER_KEY_COLLECTION_ITEM_MODE = "prefer_key_collection_item_mode";
+    // 当前用户纬度
+    public static final String PREFER_KEY_LATITUDE = "PREFER_KEY_LATITUDE";
 
     // 状态栏是否透明
     public static final String PREFER_KEY_STATUSBAR_TRANSPARENT = "prefer_key_statusbar_transparent";
 
-    // 网页主题
-    public static final String PREFER_KEY_HTML_THEME = "prefer_key_html_theme";
 
 }

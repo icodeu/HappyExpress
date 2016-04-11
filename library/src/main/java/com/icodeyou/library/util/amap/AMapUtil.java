@@ -1,10 +1,16 @@
 package com.icodeyou.library.util.amap;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps2d.AMapUtils;
+import com.amap.api.maps2d.model.LatLng;
+import com.icodeyou.library.util.ConstantUtil;
+import com.icodeyou.library.util.PreferencesUtils;
+import com.icodeyou.library.util.StringUtils;
 
 /**
  * 高德地图相关Util
@@ -78,6 +84,36 @@ public class AMapUtil {
         //启动定位
         locationClient.startLocation();
         return locationClient;
+    }
+
+    /**
+     * 计算两点间距离
+     */
+    public static float calculateDistance(LatLng start, LatLng end) {
+        float distance = AMapUtils.calculateLineDistance(start, end);
+        return distance;
+    }
+
+    /**
+     * 计算两点间距离
+     */
+    public static String calculateDistance(Context context, double startLatitude, double startLongtitude) {
+        // 从本地取出当前用户坐标
+        String longtitudeStr = PreferencesUtils.getString(context, ConstantUtil.PREFER_KEY_LONGTITUDE, "0");
+        String latitudeStr = PreferencesUtils.getString(context, ConstantUtil.PREFER_KEY_LATITUDE, "0");
+        double longtitude = Double.valueOf(longtitudeStr);
+        double latitude = Double.valueOf(latitudeStr);
+
+        if (StringUtils.equals("0", longtitudeStr) || StringUtils.equals("0", latitudeStr)) {
+            return "未知";
+        } else {
+            // 计算两点间距离
+            LatLng start = new LatLng(startLatitude, startLongtitude);
+            LatLng end = new LatLng(latitude, longtitude);
+            int distance = (int) calculateDistance(start, end);
+            Log.d(TAG, "start = " + start + " end = " + end + "  计算出距离 distance = "  + distance);
+            return String.valueOf(distance) + "米";
+        }
     }
 
 }
