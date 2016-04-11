@@ -70,6 +70,10 @@ public class PublishGrabOrderActivity extends BaseActivity {
     TextView mTvStep3;
 
     // 收件人姓名
+    @Bind(R.id.id_tv_recv_name)
+    TextView mTvRecvName;
+    @Bind(R.id.id_tv_recv_address)
+    TextView mTvRecvAddress;
 
     // 收件人地址
 
@@ -203,6 +207,8 @@ public class PublishGrabOrderActivity extends BaseActivity {
         if (intent.hasExtra(EXTRA_EXPRESS_INFO)) {
             mExpressInfo = (ExpressInfo) intent.getSerializableExtra(EXTRA_EXPRESS_INFO);
             Log.d(TAG, "getDataPassed expressInfo = " + mExpressInfo);
+            mTvRecvName.setText(mExpressInfo.getRecvName());
+            mTvRecvAddress.setText(mExpressInfo.getRecvAddress());
         }
     }
 
@@ -245,7 +251,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
     private void btnPayOnClick() {
         final Dialog payDialog = new Dialog(this);
         payDialog.setContentView(R.layout.dialog_pay);
-        payDialog.setTitle("请选择支付方式:");
+        payDialog.setTitle("请选择支付方式");
         Button btnWeChatPay = (Button) payDialog.findViewById(R.id.id_btn_wechat_pay);
         Button btnAliPay = (Button) payDialog.findViewById(R.id.id_btn_ali_pay);
         btnWeChatPay.setOnClickListener(new View.OnClickListener() {
