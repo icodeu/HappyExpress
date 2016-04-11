@@ -316,7 +316,7 @@ public class PublishGrabOrderActivity extends BaseActivity {
      * 支付成功后的操作
      */
     private void changeStatusAfterPaySuccess() {
-        mBaseToolbar.setTitle("已支付，等待接单");
+        mBaseToolbar.setTitle("已支付");
         mBtnPay.setText("已支付");
         mBtnPay.setEnabled(false);
         changeToStep3();

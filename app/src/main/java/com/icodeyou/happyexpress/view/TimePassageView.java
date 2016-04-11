@@ -189,8 +189,8 @@ public class TimePassageView extends View {
 
     public void start() {
         // 先计算 centerX,centerY
-        mCenterX = ScreenUtils.getScreenWidth(mActivity) / 2 - 70;
-        mCenterY = ScreenUtils.getScreenHeight(mActivity) / 2 - 200;
+        mCenterX = ScreenUtils.getScreenWidth(mActivity) / 2 - 10;
+        mCenterY = ScreenUtils.getScreenHeight(mActivity) / 2 - 400;
 
         mOuterCirclePaint.setColor(mActivity.getResources().getColor(R.color.mercury));
         mInnerCirclePaint.setColor(mActivity.getResources().getColor(R.color.spiro_disco_ball));
