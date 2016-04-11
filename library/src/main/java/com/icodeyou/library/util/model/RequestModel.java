@@ -16,6 +16,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -66,6 +67,7 @@ public class RequestModel {
         query.addWhereEqualTo("expressInfo", expressInfo);
         query.include("publishedUser");
         query.include("courierUser");
+        query.include("expressInfo");
         query.findObjects(context, new FindListener<GrabOrder>() {
             @Override
             public void onSuccess(List<GrabOrder> list) {
@@ -268,6 +270,47 @@ public class RequestModel {
             }
             @Override
             public void onError(int i, String s) {
+            }
+        });
+    }
+
+    /**
+     * 根据抢单查询快递员信息 User
+     */
+    public static void queryCourierUserInfo(Context context, GrabOrder grabOrder, final RequestCallback<User> callback) {
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.getObject(context, grabOrder.getCourierUser().getObjectId(), new GetListener<User>() {
+            @Override
+            public void onSuccess(User user) {
+                Log.d(TAG, "onSuccess 根据抢单查询快递员信息 " + user.toString());
+                callback.onSuccess(user);
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
+    }
+
+    /**
+     * 更新用户的经纬度信息 User
+     */
+    public static void updateUserPositon(Context context, double longtitude, double latitude, final RequestCallback<String> callback) {
+        // Update longtitude and latitude
+        User newUser = new User();
+        newUser.setLongtitude(longtitude);
+        newUser.setLatitude(latitude);
+        newUser.update(context, BmobUser.getCurrentUser(context, User.class).getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess("success");
+                Log.d(TAG, "onSuccess 更新用户的经纬度信息");
+            }
+            @Override
+            public void onFailure(int i, String s) {
+                callback.onSuccess(s);
+                Log.d(TAG, "onFailure 更新用户的经纬度信息");
             }
         });
     }

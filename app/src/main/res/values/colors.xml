@@ -36,4 +36,8 @@
     <color name="gainsboro">#DDDDDD</color>
     <color name="stack">#8B8F8E</color>
     <color name="zircon">#E1E1E1</color>
+    <color name="ali_green_light">#01cc99</color>
+    <color name="ali_green_pressed">#01aa99</color>
+    <color name="spiro_disco">#33D0FF</color>
+    <color name="mountain_mist">#909192</color>
 </resources>

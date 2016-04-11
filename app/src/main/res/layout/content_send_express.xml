@@ -41,7 +41,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginLeft="15dp"
-                        android:src="@drawable/icon_entry_i_want_send_package" />
+                        android:src="@drawable/grab_logo" />
 
                     <TextView
                         android:id="@+id/id_tv_grab_order_title"
@@ -185,7 +185,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginLeft="15dp"
-                        android:src="@drawable/icon_entry_i_want_send_package" />
+                        android:src="@drawable/station_logo" />
 
                     <TextView
                         android:id="@+id/id_tv_come_door_order_title"

@@ -12,7 +12,7 @@ import com.icodeyou.library.util.PreferencesUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private Toolbar mBaseToolbar;
+    public Toolbar mBaseToolbar;
     private ProgressDialog mProgressDialog;
 
     @Override

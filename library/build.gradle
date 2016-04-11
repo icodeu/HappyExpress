@@ -33,4 +33,5 @@ dependencies {
     compile 'cn.bmob.android:bmob-sdk:3.4.3'
     compile files('libs/AMap_Location_V2.4.0_20160308.jar')
     compile files('libs/AMap_2DMap_V2.8.1_20160202.jar')
+    compile files('libs/BmobPay_v2.6_160411.jar')
 }

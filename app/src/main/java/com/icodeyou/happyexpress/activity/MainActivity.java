@@ -30,6 +30,7 @@ import com.icodeyou.happyexpress.fragment.HomeFragment;
 import com.icodeyou.library.util.ConstantUtil;
 import com.icodeyou.library.util.PreferencesUtils;
 import com.icodeyou.library.util.amap.AMapUtil;
+import com.icodeyou.library.util.bean.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,8 @@ public class MainActivity extends BaseActivity {
 
         // 对控件进行设置、适配、填充数据
         configViews();
+
+        User.login(this, "CommonUser", "123456");
 
         // 定位，把数据保存到本地
         mLocationClient = AMapUtil.startLocation(getApplicationContext(), new AMapLocationListener() {

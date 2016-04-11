@@ -13,9 +13,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:gravity="center_vertical"
         android:background="@color/white">
 
@@ -65,7 +65,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/sendpackage_detail_icon_send"/>
                 
                 <EditText
                     android:id="@+id/id_et_send_address"
@@ -88,7 +88,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/postman_order_sender_ico"/>
 
                 <EditText
                     android:id="@+id/id_et_send_name"
@@ -111,7 +111,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/postman_order_phone_ico"/>
 
                 <EditText
                     android:id="@+id/id_et_send_mobile"
@@ -157,7 +157,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/sendpackage_detail_icon_receive"/>
 
                 <EditText
                     android:id="@+id/id_et_recv_address"
@@ -180,7 +180,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/postman_order_sender_ico"/>
 
                 <EditText
                     android:id="@+id/id_et_recv_name"
@@ -203,7 +203,7 @@
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:src="@drawable/postman_order_clock_icon"/>
+                    android:src="@drawable/postman_order_phone_ico"/>
 
                 <EditText
                     android:id="@+id/id_et_recv_mobile"
@@ -224,6 +224,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:background="@drawable/sel_green_button"
         android:text="我要寄件"/>
 
 </LinearLayout>

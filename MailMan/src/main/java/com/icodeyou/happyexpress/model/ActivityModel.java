@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.icodeyou.happyexpress.activity.queryexpress.QueryExpressActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.ComeDoorOrderActivity;
-import com.icodeyou.happyexpress.activity.sendexpress.GrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.PublishGrabOrderActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.SendExpressActivity;
 import com.icodeyou.library.util.bean.ExpressInfo;
@@ -25,14 +24,6 @@ public class ActivityModel {
      */
     public static void goToComeDoorOrderActivity(Context context) {
         Intent intent = new Intent(context, ComeDoorOrderActivity.class);
-        context.startActivity(intent);
-    }
-
-    /**
-     * 抢单寄件
-     */
-    public static void goToGrabOrderActivity(Context context) {
-        Intent intent = new Intent(context, GrabOrderActivity.class);
         context.startActivity(intent);
     }
 

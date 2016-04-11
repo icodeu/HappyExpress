@@ -105,7 +105,7 @@ public class GrabOrderActivity extends BaseActivity {
 
         showProgressDialog("请稍等，正在发布订单");
 
-        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), 0, 0, 0, mSendLongtitude, mSendLatitude, new RequestCallback<ExpressInfo>() {
+        RequestModel.saveExpressInfo(this, sendAddress, sendName, sendMobile, recvAddress, recvName, recvMobile, BmobUser.getCurrentUser(this, User.class), 0, 0, 10.0, mSendLongtitude, mSendLatitude, new RequestCallback<ExpressInfo>() {
             @Override
             public void onSuccess(ExpressInfo expressInfo) {
                 dismissProgressDialog();

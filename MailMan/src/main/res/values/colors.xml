@@ -7,7 +7,6 @@
     <color name="main_black">#000000</color>
     <color name="main_black_grey">#6D6D6D</color>
     <color name="main_grey_light">#F3F3F3</color>
-    <color name="zircon">#E1E1E1</color>
 
     <color name="iron">#D6D7D7</color>
     <color name="limeade">#649A00</color>
@@ -34,4 +33,11 @@
     <color name="gallery_white">#F0F0F0</color>
     <color name="safety_orange">#FB9802</color>
     <color name="neon_carrot">#FB9635</color>
+    <color name="gainsboro">#DDDDDD</color>
+    <color name="stack">#8B8F8E</color>
+    <color name="zircon">#E1E1E1</color>
+    <color name="ali_green_light">#01cc99</color>
+    <color name="ali_green_pressed">#01aa99</color>
+    <color name="spiro_disco">#33D0FF</color>
+    <color name="mountain_mist">#909192</color>
 </resources>

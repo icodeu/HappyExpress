@@ -25,13 +25,6 @@ public class SendExpressActivity extends BaseActivity {
     }
 
     private void configViews() {
-        mLlGrabOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityModel.goToGrabOrderActivity(SendExpressActivity.this);
-            }
-        });
-
         mLlComeDoorOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
