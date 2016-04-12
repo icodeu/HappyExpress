@@ -50,6 +50,19 @@
         android:layout_alignTop="@id/id_tv_grab_time_label"
         android:text="time"/>
 
+    <TextView
+        android:id="@+id/id_tv_is_payed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:layout_toRightOf="@id/id_tv_grab_time"
+        android:layout_alignTop="@id/id_tv_grab_time"
+        android:layout_marginLeft="3dp"
+        android:background="@color/tangelo"
+        android:textColor="@color/white"
+        android:text="未支付"/>
+
     <Button
         android:id="@+id/id_btn_track_number"
         android:layout_width="80dp"

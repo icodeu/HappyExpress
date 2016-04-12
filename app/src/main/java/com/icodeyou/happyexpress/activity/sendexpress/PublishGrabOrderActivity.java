@@ -188,9 +188,8 @@ public class PublishGrabOrderActivity extends BaseActivity {
                         // 快递员的经纬度坐标
                         LatLng postMan = new LatLng(user.getLatitude(), user.getLongtitude());
                         // 往地图上添加一个marker
-                        mAMap.addMarker(new MarkerOptions().position(postMan).icon(
-                                BitmapDescriptorFactory
-                                        .defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                        mAMap.addMarker(new MarkerOptions().position(postMan).icon(BitmapDescriptorFactory.fromResource(R.drawable.address_tag_on_map)));
+
                         // 地图中心移动到指定坐标
                         changeCamera(
                                 CameraUpdateFactory.newCameraPosition(new CameraPosition(
@@ -282,10 +281,16 @@ public class PublishGrabOrderActivity extends BaseActivity {
      */
     private void gotoPay(boolean isAliPay) {
         BP.pay(PublishGrabOrderActivity.this, "运费", "抢单运费", 0.01, isAliPay, new PListener() {
+            String orderIdStr = "-1";
             @Override
             public void orderId(String s) {
                 Log.d(TAG, "pay orderId = " + s);
-                RequestModel.updateOrderIdAfterPayed(PublishGrabOrderActivity.this, mGrabOrder, s, new RequestCallback<String>() {
+                orderIdStr = s;
+            }
+            @Override
+            public void succeed() {
+                Log.d(TAG, "pay success");
+                RequestModel.updateOrderIdAfterPayed(PublishGrabOrderActivity.this, mGrabOrder, orderIdStr, new RequestCallback<String>() {
                     @Override
                     public void onSuccess(String s) {
                         Log.d(TAG, "onSuccess 支付成功");
@@ -296,10 +301,6 @@ public class PublishGrabOrderActivity extends BaseActivity {
                     public void onFail(String s) {
                     }
                 });
-            }
-            @Override
-            public void succeed() {
-                Log.d(TAG, "pay success");
             }
             @Override
             public void fail(int i, String s) {

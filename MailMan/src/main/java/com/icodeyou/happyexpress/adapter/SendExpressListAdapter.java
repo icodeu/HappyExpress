@@ -43,10 +43,19 @@ public class SendExpressListAdapter extends CommonAdapter<GrabOrder> {
         final GrabOrder grabOrder = (GrabOrder) getItem(position);
         TextView tvSendAddress = get(view, R.id.id_tv_send_address);
         TextView tvGrabTime = get(view, R.id.id_tv_grab_time);
+        TextView tvPayed = get(view, R.id.id_tv_is_payed);
         Button btnTrackNumber = get(view, R.id.id_btn_track_number);
+
 
         tvSendAddress.setText(grabOrder.getExpressInfo().getSendAddress());
         tvGrabTime.setText(grabOrder.getGrabTime().getDate());
+        if (grabOrder.isPayed()) {
+            tvPayed.setText("已付款");
+            tvPayed.setBackgroundColor(getContext().getResources().getColor(R.color.green));
+        } else {
+            tvPayed.setText("未支付");
+            tvPayed.setBackgroundColor(getContext().getResources().getColor(R.color.tangelo));
+        }
 
         btnTrackNumber.setOnClickListener(new View.OnClickListener() {
             @Override
