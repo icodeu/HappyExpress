@@ -70,7 +70,7 @@ public class RequestModel {
             @Override
             public void onSuccess(List<GrabOrder> list) {
                 callback.onSuccess(list);
-                Log.d(TAG, "查询GrabOrder成功 " + list.get(0).toString());
+//                Log.d(TAG, "查询GrabOrder成功 " + list.get(0).toString());
             }
 
             @Override
