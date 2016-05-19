@@ -29,7 +29,11 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
 
     private ImageView mIvPostStationMore;
+    // 寄快递
     private LinearLayout mLlSendExpress;
+    // 发布代取
+    private LinearLayout mLlHelpTake;
+    // 查快递
     private LinearLayout mLlQueryExpress;
 
     private ListView mLvNearPostStation;
@@ -44,6 +48,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mLlSendExpress = (LinearLayout) view.findViewById(R.id.id_ll_send_express);
+        mLlHelpTake = (LinearLayout) view.findViewById(R.id.id_ll_help_take);
         mLlQueryExpress = (LinearLayout) view.findViewById(R.id.id_ll_query_express);
         mLvNearPostStation = (ListView) view.findViewById(R.id.id_lv_near_post_station);
         mIvPostStationMore = (ImageView) view.findViewById(R.id.id_iv_near_post_station_more);
@@ -86,6 +91,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ActivityModel.goToSendExpressActivity(getActivity());
+            }
+        });
+
+        mLlHelpTake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityModel.goToPublishHelpTakeActivity(getActivity());
             }
         });
 

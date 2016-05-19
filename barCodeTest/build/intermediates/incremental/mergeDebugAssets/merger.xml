@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/huan/Repository/AndroidStudioProjects/HappyExpress/barCodeTest/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/huan/Repository/AndroidStudioProjects/HappyExpress/barCodeTest/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/huan/Repository/AndroidStudioProjects/HappyExpress/barCodeTest/src/main/assets"/><source path="/Users/huan/Repository/AndroidStudioProjects/HappyExpress/barCodeTest/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/huan/Repository/AndroidStudioProjects/HappyExpress/barCodeTest/src/debug/assets"/></dataSet></merger>

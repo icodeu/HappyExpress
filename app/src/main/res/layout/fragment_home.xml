@@ -34,15 +34,16 @@
                 android:text="寄快递"/>
         </LinearLayout>
 
-        <!-- 我的包裹 -->
+        <!-- 发布代取 -->
         <LinearLayout
+            android:id="@+id/id_ll_help_take"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
             <ImageView
-                android:id="@+id/id_iv_my_express"
+                android:id="@+id/id_iv_help_take"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/icon_my_express"/>
@@ -50,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="我的包裹"/>
+                android:text="发布代取"/>
         </LinearLayout>
 
         <!-- 查快递 -->

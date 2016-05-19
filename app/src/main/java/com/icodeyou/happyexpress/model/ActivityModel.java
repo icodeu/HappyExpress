@@ -3,6 +3,7 @@ package com.icodeyou.happyexpress.model;
 import android.content.Context;
 import android.content.Intent;
 
+import com.icodeyou.happyexpress.activity.helptake.PublishHelpTakeActivity;
 import com.icodeyou.happyexpress.activity.poststation.PostStationDetailActivity;
 import com.icodeyou.happyexpress.activity.queryexpress.QueryExpressActivity;
 import com.icodeyou.happyexpress.activity.sendexpress.ComeDoorOrderActivity;
@@ -44,6 +45,14 @@ public class ActivityModel {
     public static void goToPublishGrabOrderActivity(Context context, ExpressInfo expressInfo) {
         Intent intent = new Intent(context, PublishGrabOrderActivity.class);
         intent.putExtra(PublishGrabOrderActivity.EXTRA_EXPRESS_INFO, expressInfo);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 发布代取页面
+     */
+    public static void goToPublishHelpTakeActivity(Context context) {
+        Intent intent = new Intent(context, PublishHelpTakeActivity.class);
         context.startActivity(intent);
     }
 

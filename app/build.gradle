@@ -25,16 +25,16 @@ dependencies {
     //avoscloud-sdk 为 LeanCloud基础包
     //    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
     // Ripple效果兼容库
-    compile files('libs/avoscloud-feedback-v3.11.1.jar')
-    compile files('libs/MobCommons.jar')
-    compile files('libs/MobTools.jar')
-    compile files('libs/ShareSDK-Core-2.6.4.jar')
-    compile files('libs/ShareSDK-QQ-2.6.4.jar')
-    compile files('libs/ShareSDK-SinaWeibo-2.6.4.jar')
-    compile files('libs/ShareSDK-Wechat-2.6.4.jar')
-    compile files('libs/ShareSDK-Wechat-Core-2.6.4.jar')
-    compile files('libs/ShareSDK-Wechat-Favorite-2.6.4.jar')
-    compile files('libs/ShareSDK-Wechat-Moments-2.6.4.jar')
+//    compile files('libs/avoscloud-feedback-v3.11.1.jar')
+//    compile files('libs/MobCommons.jar')
+//    compile files('libs/MobTools.jar')
+//    compile files('libs/ShareSDK-Core-2.6.4.jar')
+//    compile files('libs/ShareSDK-QQ-2.6.4.jar')
+//    compile files('libs/ShareSDK-SinaWeibo-2.6.4.jar')
+//    compile files('libs/ShareSDK-Wechat-2.6.4.jar')
+//    compile files('libs/ShareSDK-Wechat-Core-2.6.4.jar')
+//    compile files('libs/ShareSDK-Wechat-Favorite-2.6.4.jar')
+//    compile files('libs/ShareSDK-Wechat-Moments-2.6.4.jar')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     //    compile 'com.facebook.fresco:fresco:0.8.1.+'

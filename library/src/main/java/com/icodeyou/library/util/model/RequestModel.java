@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
+import com.icodeyou.library.util.bean.HelpTake;
 import com.icodeyou.library.util.bean.PostStation;
 import com.icodeyou.library.util.bean.User;
 
@@ -334,6 +335,42 @@ public class RequestModel {
                 Log.d(TAG, "onFailure 更新订单付款信息");
             }
         });
+    }
+
+    /**
+     * 发布代取订单信息 HelpTake
+     */
+    public static void insertHelpTake(Context context, String expressCompany, String recvAddress, String recvMobile, String recvName, String mailManMobile,
+                                      String deliveryTime , String deliveryAddress, final RequestCallback<String> callback) {
+        final HelpTake helpTake = new HelpTake();
+
+        User curUser = BmobUser.getCurrentUser(context, User.class);
+        helpTake.setPublishedUser(curUser);
+        helpTake.setGrabTime(new BmobDate(new Date()));
+        helpTake.setExpressCompany(expressCompany);
+        helpTake.setRecvPackageAddress(recvAddress);
+        helpTake.setRecvOwnerMobile(recvMobile);
+        helpTake.setRecvOwnerName(recvName);
+        helpTake.setMailmanMobile(mailManMobile);
+        helpTake.setDeliveryTime(deliveryTime);
+        helpTake.setDeliveryAddress(deliveryAddress);
+
+        helpTake.setPayed(false);
+        helpTake.setTaked(false);
+
+        helpTake.save(context, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess("success");
+                Log.d(TAG, "保存HelpTake成功 " + helpTake.toString());
+            }
+            @Override
+            public void onFailure(int code, String msg) {
+                callback.onFail(msg);
+                Log.d(TAG, "保存HelpTake失败 " + msg);
+            }
+        });
+
     }
 
 }
