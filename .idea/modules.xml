@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/HappyExpress.iml" filepath="$PROJECT_DIR$/HappyExpress.iml" />
       <module fileurl="file://$PROJECT_DIR$/MailMan/MailMan.iml" filepath="$PROJECT_DIR$/MailMan/MailMan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/barCodeTest/barCodeTest.iml" filepath="$PROJECT_DIR$/barCodeTest/barCodeTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>

@@ -1,1 +1,2 @@
 include ':app', ':library', ':MailMan'
+include ':barCodeTest'
