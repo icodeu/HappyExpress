@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.bumptech.glide.Glide;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.activity.BaseActivity;
+import com.icodeyou.library.util.ToastUtil;
 import com.icodeyou.library.util.bean.HelpTake;
 
 import butterknife.Bind;
@@ -134,6 +136,14 @@ public class HelpTakeDetailActivity extends BaseActivity {
                 ImageView ivQrcode = (ImageView) qrDialog.findViewById(R.id.id_iv_qr_code);
                 Glide.with(HelpTakeDetailActivity.this).load("http://a.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=7bcb659c9745d688a302b5a29cf91a23/2934349b033b5bb571dc8c5133d3d539b600bc12.jpg").into(ivQrcode);
                 qrDialog.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        qrDialog.dismiss();
+                        ToastUtil.showToast(HelpTakeDetailActivity.this, "认证成功");
+                    }
+                }, 5000);
             }
         });
     }
