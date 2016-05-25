@@ -32,6 +32,7 @@ import com.icodeyou.library.util.ConstantUtil;
 import com.icodeyou.library.util.PreferencesUtils;
 import com.icodeyou.library.util.amap.AMapUtil;
 import com.icodeyou.library.util.bean.User;
+import com.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -256,8 +257,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_notify:
-//                startActivity(new Intent(MainActivity.this, NotificationActivity.class));
+            case R.id.action_search:
+                startActivity(new Intent(MainActivity.this, CaptureActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
