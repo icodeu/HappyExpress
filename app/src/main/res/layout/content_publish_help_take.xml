@@ -1,228 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.sendexpress.GrabOrderActivity"
-    tools:showIn="@layout/activity_grab_order">
+    android:layout_height="match_parent">
 
-    <!-- 快件信息 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activity.sendexpress.GrabOrderActivity"
+        tools:showIn="@layout/activity_grab_order">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gallery"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:text="快件信息"/>
 
-        <!-- 快件公司 取货地址 取件人姓名 取件人电话 快递员电话 -->
+        <!-- 快件信息 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
-            <!-- 快件公司 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gallery"
+                android:padding="10dp"
+                android:text="快件信息"
+                android:textSize="16sp" />
+
+            <!-- 快件公司 取货地址 取件人姓名 取件人电话 快递员电话 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/sendpackage_detail_icon_send"/>
-
-                <EditText
-                    android:id="@+id/id_et_express_company"
+                <!-- 快件公司 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="快件公司"
-                    android:hint="快件公司"/>
-            </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
 
-            <!-- 取货地址 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/sendpackage_detail_icon_send" />
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/postman_order_sender_ico"/>
+                    <EditText
+                        android:id="@+id/id_et_express_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="快件公司"
+                        android:text="快件公司"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/id_et_recv_package_address"
+                <!-- 取货地址 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="取货地址"
-                    android:hint="取货地址"/>
-            </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
 
-            <!-- 取件人电话 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/postman_order_sender_ico" />
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/postman_order_phone_ico"/>
+                    <EditText
+                        android:id="@+id/id_et_recv_package_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="取货地址"
+                        android:text="取货地址"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/id_et_recv_owner_mobile"
+                <!-- 取件人电话 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="取件人电话"
-                    android:hint="取件人电话"/>
-            </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
 
-            <!-- 取件人姓名 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/postman_order_phone_ico" />
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/postman_order_phone_ico"/>
+                    <EditText
+                        android:id="@+id/id_et_recv_owner_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="取件人电话"
+                        android:text="取件人电话"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/id_et_recv_owner_name"
+                <!-- 取件人姓名 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="取件人姓名"
-                    android:hint="取件人姓名"/>
-            </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
 
-            <!-- 快递员电话 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/postman_order_phone_ico" />
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/postman_order_phone_ico"/>
+                    <EditText
+                        android:id="@+id/id_et_recv_owner_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="取件人姓名"
+                        android:text="取件人姓名"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/id_et_mailman_mobile"
+                <!-- 快递员电话 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="快递员电话"
-                    android:hint="快递员电话"/>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/postman_order_phone_ico" />
+
+                    <EditText
+                        android:id="@+id/id_et_mailman_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="快递员电话"
+                        android:text="快递员电话"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- 交付时间地点信息 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gallery"
-            android:textSize="16sp"
-            android:padding="10dp"
-            android:text="交付信息"/>
-
-        <!-- 交付时间 交付地址 -->
+        <!-- 交付时间地点信息 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
-            <!-- 交付时间 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gallery"
+                android:padding="10dp"
+                android:text="交付信息"
+                android:textSize="16sp" />
+
+            <!-- 交付时间 交付地址 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/sendpackage_detail_icon_receive"/>
-
-                <EditText
-                    android:id="@+id/id_et_delivery_time"
+                <!-- 交付时间 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="交付时间"
-                    android:hint="交付时间"/>
-            </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
 
-            <!-- 交付地址 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="10dp">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/sendpackage_detail_icon_receive" />
 
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/postman_order_sender_ico"/>
+                    <EditText
+                        android:id="@+id/id_et_delivery_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="交付时间"
+                        android:text="交付时间"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/id_et_delivery_address"
+                <!-- 交付地址 -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/steel"
-                    android:text="交付地址"
-                    android:hint="交付地址"/>
+                    android:gravity="center_vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/postman_order_sender_ico" />
+
+                    <EditText
+                        android:id="@+id/id_et_delivery_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:hint="交付地址"
+                        android:text="交付地址"
+                        android:textColor="@color/steel"
+                        android:textSize="14sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <!-- 确定按钮 -->
+        <Button
+            android:id="@+id/id_btn_send_help_take_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sel_green_button"
+            android:text="我要发布代取请求" />
+
     </LinearLayout>
-
-    <!-- 确定按钮 -->
-    <Button
-        android:id="@+id/id_btn_send_help_take_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/sel_green_button"
-        android:text="我要发布代取请求"/>
-
-</LinearLayout>
+</ScrollView>

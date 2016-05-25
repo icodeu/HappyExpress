@@ -76,6 +76,10 @@
             android:label="@string/title_activity_post_station_detail"
             android:theme="@style/MyThemeLightGreen" />
         <activity
+            android:name=".activity.helptake.HelpTakeDetailActivity"
+            android:label="@string/title_activity_post_station_detail"
+            android:theme="@style/MyThemeLightGreen" />
+        <activity
             android:name="c.b.a.A"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"

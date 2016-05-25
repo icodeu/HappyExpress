@@ -26,6 +26,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.icodeyou.happyexpress.R;
 import com.icodeyou.happyexpress.adapter.ContentViewPagerAdapter;
 import com.icodeyou.happyexpress.fragment.ContentFragment;
+import com.icodeyou.happyexpress.fragment.FindFragment;
 import com.icodeyou.happyexpress.fragment.HomeFragment;
 import com.icodeyou.library.util.ConstantUtil;
 import com.icodeyou.library.util.PreferencesUtils;
@@ -219,7 +220,9 @@ public class MainActivity extends BaseActivity {
         mTitles[3] = "我的";
         HomeFragment homeFragment = new HomeFragment();
         mFragments.add(homeFragment);
-        for (int i = 1; i < mTitles.length; i++) {
+        FindFragment findFragment = new FindFragment();
+        mFragments.add(findFragment);
+        for (int i = 2; i < mTitles.length; i++) {
             ContentFragment fragment = new ContentFragment();
             Bundle bundle = new Bundle();
             bundle.putString(ContentFragment.BUNDLE_KEY_CATEGORY, mTitles[i]);

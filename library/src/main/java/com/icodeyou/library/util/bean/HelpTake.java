@@ -35,6 +35,7 @@ public class HelpTake extends BmobObject implements Serializable{
     private boolean isPayed; // 用户是否付款
     private String orderId; // 付款单号
     private Boolean isTaked; // 是否交付完成
+    private boolean isGrabed; // 是否交付完成
     private String trackingNumber; //运单号
 
     public static void createThisTable(Context context) {
@@ -48,6 +49,7 @@ public class HelpTake extends BmobObject implements Serializable{
         helpTake.setPayed(false);
         helpTake.setTaked(false);
         helpTake.setTrackingNumber("1000234");
+        helpTake.setGrabed(false);
 
         helpTake.save(context, new SaveListener() {
             @Override
@@ -201,5 +203,13 @@ public class HelpTake extends BmobObject implements Serializable{
                 ", isTaked=" + isTaked +
                 ", trackingNumber='" + trackingNumber + '\'' +
                 '}';
+    }
+
+    public boolean isGrabed() {
+        return isGrabed;
+    }
+
+    public void setGrabed(boolean grabed) {
+        isGrabed = grabed;
     }
 }

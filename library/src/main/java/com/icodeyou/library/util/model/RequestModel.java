@@ -3,6 +3,7 @@ package com.icodeyou.library.util.model;
 import android.content.Context;
 import android.util.Log;
 
+import com.icodeyou.library.util.CollectionUtil;
 import com.icodeyou.library.util.bean.ExpressInfo;
 import com.icodeyou.library.util.bean.GrabOrder;
 import com.icodeyou.library.util.bean.HelpTake;
@@ -357,6 +358,7 @@ public class RequestModel {
 
         helpTake.setPayed(false);
         helpTake.setTaked(false);
+        helpTake.setGrabed(false);
 
         helpTake.save(context, new SaveListener() {
             @Override
@@ -371,6 +373,51 @@ public class RequestModel {
             }
         });
 
+    }
+
+    /**
+     * 获取可抢代取订单信息 HelpTake
+     */
+    public static void queryHelpTake(Context context, final RequestCallback<List<HelpTake>> callback) {
+        BmobQuery<HelpTake> query = new BmobQuery<HelpTake>();
+        query.addWhereEqualTo("isGrabed", false);
+        query.findObjects(context, new FindListener<HelpTake>() {
+            @Override
+            public void onSuccess(List<HelpTake> list) {
+                if (CollectionUtil.isNotEmpty(list)) {
+                    callback.onSuccess(list);
+                }
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Log.d(TAG, "查询可抢代取订单失败 " + s);
+            }
+        });
+    }
+
+
+    /**
+     * 抢单 - HelpTake
+     */
+    public static void grabHelpTakeOrder(Context context, HelpTake helpTake, final RequestCallback<String> callback) {
+        User curUser = BmobUser.getCurrentUser(context, User.class);
+        //1. Update HelpTake isGrabed->yes
+        HelpTake newInfo = new HelpTake();
+        newInfo.setGrabed(true);
+        newInfo.setGrabUser(curUser);
+        newInfo.update(context, helpTake.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "onSuccess 更新isGrabed->true");
+                callback.onSuccess("success");
+            }
+            @Override
+            public void onFailure(int i, String s) {
+                Log.d(TAG, "onFailure 更新isGrabed->true");
+                callback.onFail(s);
+            }
+        });
     }
 
 }
